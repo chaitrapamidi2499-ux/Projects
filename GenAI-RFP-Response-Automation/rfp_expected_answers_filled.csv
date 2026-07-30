@@ -1,0 +1,26 @@
+Question,Expected Answer Snippet
+Provide a detailed description of the proposed solution.,"StorageGRID is an object-based, software-defined storage platform."
+What are the scalability options for the proposed solution?,The solution supports scalability with large object capacity and multi-petabyte growth.
+Scalability - min and max capacity and number of objects supported,Minimum and maximum capacity depend on system configuration; supports billions of objects.
+"No SPOF (Single Point of Failure) components – for software defined, how does your software report and manage failed components? Are there any SPOF in any piece of the architecture - hardware, software, or both? If no, please explain how this is accomplished.",There are no Single Points of Failure; components are designed for redundancy.
+"Does the solution have automatic failure notification via email, text, and other methods?","Yes, the solution provides automatic failure notifications via email or other methods."
+"Can access to reporting features be segregated by users/roles? If so, please explain.","Yes, user and role-based access can control reporting visibility."
+"Does the solution have reporting related to system health? If so, please explain the reporting and the granularity. ",System health reports are available with various levels of granularity.
+"Product reporting - including chargeback for tenant capacity, performance usage and product health","Reports cover tenant usage, performance metrics, and overall health."
+Describe all the security features of the proposed solution.,"The solution supports encryption, RBAC, AD/LDAP integration, and secure API access."
+"Please specify how data at rest encryption is provided (e.g. underlying server/disk encryption, software-based server-side encryption, client provided Keys?)",Data at rest encryption is provided via AES-256 and supports server-side or key-based encryption.
+Does the solution support FIPS 140-2 compliant AES 256-bit encryption? Is this compliance selectable or does it demand all or nothing?,"Yes, the solution supports FIPS 140-2 compliant AES 256-bit encryption."
+Product performance capabilities - e.g.  read or written per minute. How many connections can the product sustain,Performance depends on hardware; supports thousands of concurrent connections.
+Availability and Reliability (Resilience),The system ensures high availability and fault tolerance.
+Load balancing customer IO capabilities across nodes in a cluster or across geographic areas within a region,"Yes, load balancing is available across nodes and geo-distributed sites."
+Replication capabilities between datacentres / data protection against data loss and corruption,Replication between datacenters is supported with protection from data loss/corruption.
+Compression and deduplication capabilities,Supports both compression and deduplication to reduce storage footprint.
+TCP / Application Protocol Support,"Supports standard protocols such as REST, S3, CIFS, NFS, and NDMP."
+RESTful API integration for product management,"REST API and GUI allow reporting by site/node, usage, and quota."
+"Can reports be produced via REST API or viewed on a GUI - based on node/site and global capacity (total, quota, used, free)? If so, please explain what is available to see and provide sample reports.",Supports delegated administration in multi-tenant environments.
+Administration capabilities for a multi-tenant product / solution,Provides performance monitoring and metrics across protocols and interfaces.
+"Product monitoring capabilities - device performance, user experience and storage capacity; over which protocols and interfaces","Yes, archive quotas can be applied per tenant."
+Ability to set and apply archive quotas per tenant,"Yes, data can be tiered across storage classes and cloud endpoints."
+"Data Tiering Capability, including cloud storage endpoints / Hybrid solution","Interoperable with public cloud services like AWS, Azure, and GCP."
+Cloud Interoperability with main stream Cloud hyperscaler,Cloud integration is possible via S3-compatible APIs and hybrid architecture.
+"While there is no requirement for the solution to fit with a private cloud infrastructure, this is a chance for the proponent to showcase its product’s features, it will be used to ensure that the products fit well into company's future direction.","Solution is compatible with cloud-native strategies, supporting future readiness."

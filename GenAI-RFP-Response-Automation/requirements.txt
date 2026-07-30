@@ -1,0 +1,7 @@
+pandas
+langchain-chroma
+langchain-huggingface
+sentence-transformers
+google-generativeai
+chromadb
+streamlit

@@ -1,0 +1,26 @@
+Question,Customer Rationale - Explanation for helping understan. Note -  This is not provided by the Customer;
+Provide a detailed description of the proposed solution.,"Solution Features, Highlights"
+What are the scalability options for the proposed solution?,Scaling Characteristics
+Scalability - min and max capacity and number of objects supported,Scalabililty Dimensions
+"No SPOF (Single Point of Failure) components – for software defined, how does your software report and manage failed components? Are there any SPOF in any piece of the architecture - hardware, software, or both? If no, please explain how this is accomplished.",Preventing Failure
+"Does the solution have automatic failure notification via email, text, and other methods?",Preventing Failure
+"Can access to reporting features be segregated by users/roles? If so, please explain.",Reporting
+"Does the solution have reporting related to system health? If so, please explain the reporting and the granularity. ",Reporting
+"Product reporting - including chargeback for tenant capacity, performance usage and product health",Reporting
+Describe all the security features of the proposed solution.,Security
+"Please specify how data at rest encryption is provided (e.g. underlying server/disk encryption, software-based server-side encryption, client provided Keys?)",Security
+Does the solution support FIPS 140-2 compliant AES 256-bit encryption? Is this compliance selectable or does it demand all or nothing?,Security
+Product performance capabilities - e.g.  read or written per minute. How many connections can the product sustain,Performance
+Availability and Reliability (Resilience),Performance
+Load balancing customer IO capabilities across nodes in a cluster or across geographic areas within a region,Performance
+Replication capabilities between datacentres / data protection against data loss and corruption,Capability
+Compression and deduplication capabilities,Capability
+TCP / Application Protocol Support,Protocol/App Support/API/nter-Ops/Compatability Support
+RESTful API integration for product management,Protocol/App Support/API/nter-Ops/Compatability Support
+"Can reports be produced via REST API or viewed on a GUI - based on node/site and global capacity (total, quota, used, free)? If so, please explain what is available to see and provide sample reports.",Protocol/App Support/API/nter-Ops/Compatability Support
+Administration capabilities for a multi-tenant product / solution,Admin
+"Product monitoring capabilities - device performance, user experience and storage capacity; over which protocols and interfaces",Admin
+Ability to set and apply archive quotas per tenant,Admin
+"Data Tiering Capability, including cloud storage endpoints / Hybrid solution",Admin
+Cloud Interoperability with main stream Cloud hyperscaler,Cloud-Support
+"While there is no requirement for the solution to fit with a private cloud infrastructure, this is a chance for the proponent to showcase its product’s features, it will be used to ensure that the products fit well into company's future direction.",Cloud-Support
