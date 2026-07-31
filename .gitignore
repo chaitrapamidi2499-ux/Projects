@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env
+
+# Environment / secrets
+.env
+*.env
+
+# IDE / editor
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python generated files
+*.log
+
+# ML model / large generated files
+*.h5
+*.hdf5
+*.keras
+*.pkl
+*.pickle
+*.joblib
+
+# Datasets / large data files
+*.zip
+*.rar
+*.7z
+
+# Temporary folders
+uploads/
+temp/
+tmp/
+
+# Chroma / vector databases
+chroma/
+chromadb/
+
+# macOS extracted metadata
+__MACOSX/
+
+# Git backup created during repository repair
+.git_old/
