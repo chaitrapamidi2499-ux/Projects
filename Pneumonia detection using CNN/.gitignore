@@ -1,0 +1,19 @@
+# Full dataset - don't upload
+chest_xray/
+
+# Trained model files
+model.keras
+model_weights/
+
+# Uploaded images
+uploads/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Jupyter Notebook cache
+.ipynb_checkpoints/
+
+# Environment files
+.env
