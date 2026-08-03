@@ -2,13 +2,11 @@
 
 Welcome to my portfolio repository! 👋
 
-This repository is a curated collection of projects demonstrating my experience in **Data Analytics, Business Intelligence, Machine Learning, Deep Learning, Computer Vision, Natural Language Processing, and Generative AI**.
-
-Each project focuses on solving real-world business or technical problems using industry-standard tools and technologies.
+This repository showcases a collection of projects demonstrating my expertise in **Data Analytics, Business Intelligence, Machine Learning, Deep Learning, Computer Vision, Natural Language Processing (NLP), and Generative AI**. Each project is designed to solve real-world business or technical problems using industry-standard tools and technologies.
 
 ---
 
-## 🚀 Technical Skills
+# 🚀 Technical Skills
 
 ### Programming Languages
 - Python
@@ -41,301 +39,177 @@ Each project focuses on solving real-world business or technical problems using 
 - Large Language Models (LLMs)
 - Retrieval-Augmented Generation (RAG)
 - ChromaDB
-- Embeddings
+- Vector Databases
 - Prompt Engineering
 
 ### Application Development
 - Flask
 - Streamlit
+- Tkinter
 
 ---
 
-# 📁 Projects
+# 📂 Project Categories
 
-## 🚗 Automobile Price Analysis using EDA
+## 🎓 Capstone Projects 
 
-**Domain:** Data Analytics
+### 🤖 [RFPro.ai - AI-Powered RFP Automation](./RFPro.ai%20-%20AI-Powered%20RFP%20Automation)
 
-### Overview
-Performed exploratory data analysis on automobile data to identify the factors influencing vehicle pricing. The project includes data cleaning, visualization, and statistical analysis to uncover pricing trends and relationships among vehicle features.
+**Technologies:** Python, RAG, LLMs, ChromaDB, Streamlit
 
-**Skills**
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
+RFPro.ai is a Retrieval-Augmented Generation (RAG) application that automates the Request for Proposal (RFP) response process. It extracts enterprise documents, indexes them into a vector database, retrieves the most relevant context, and generates accurate, context-aware responses using Large Language Models.
 
 ---
 
-## 📞 Connect Hub Customer Support Analytics Dashboard
+### 🩺 [Pneumonia Detection from Chest X-rays using CNN](./Pneumonia%20Detection%20from%20Chest%20X-rays%20using%20CNN)
 
-**Domain:** Business Intelligence
+**Technologies:** TensorFlow, Keras, CNN, Flask, OpenCV
 
-### Overview
-Developed an interactive Power BI dashboard to analyze customer support operations, monitor key performance indicators, and visualize service performance for better business decision-making.
-
-**Skills**
-- Power BI
-- Dashboard Design
-- KPI Analysis
-- Data Visualization
+A deep learning application that classifies chest X-ray images as **Normal** or **Pneumonia** using transfer learning. The project also includes a Flask web application for real-time predictions.
 
 ---
 
-## 🚘 Automobile Sales Price Prediction using Regression
+# 📊 Power BI Projects
 
-**Domain:** Machine Learning
+### 📞 [Connect Hub - Customer Support Analytics Dashboard](./Connect%20Hub%20-%20Customer%20Support%20Analytics%20Dashboard)
 
-### Overview
-Built a regression model to predict automobile prices using dealership data. The project covers data preprocessing, exploratory analysis, feature selection, model building, and evaluation.
+**Technologies:** Power BI, DAX, Power Query
 
-**Skills**
-- Python
-- Scikit-learn
-- Regression
-- EDA
+An interactive dashboard that analyzes customer support operations, monitors service KPIs, response times, and overall support performance to enable data-driven decision-making.
 
 ---
 
-## 📊 Business Data Analysis using Microsoft Excel
+### 📈 [Swasthik - Sales Performance Analytics Dashboard](./Swasthik%20-%20Sales%20Performance%20Analytics%20Dashboard)
 
-**Domain:** Data Analytics
+**Technologies:** Power BI, DAX, Forecasting
 
-### Overview
-Performed business data analysis using Microsoft Excel, applying formulas, pivot tables, filtering, and visualization techniques to extract actionable insights from structured datasets.
-
-**Skills**
-- Microsoft Excel
-- Data Cleaning
-- Pivot Tables
-- Business Analysis
+A business intelligence dashboard designed to analyze sales performance, identify business trends, and support forecasting through interactive visualizations.
 
 ---
 
-## 👤 Face Recognition-Based Attendance System
+# 📈 Tableau Projects
 
-**Domain:** Computer Vision
+### 🎬 [Netflix Content Analytics Dashboard](./Netflix%20Content%20Analytics%20Dashboard)
 
-### Overview
-Developed a facial recognition attendance system capable of identifying registered individuals and automatically recording attendance using computer vision techniques.
+**Technologies:** Tableau
 
-**Skills**
-- Python
-- OpenCV
-- Face Recognition
-- Computer Vision
+An interactive Tableau dashboard that analyzes Netflix's content library across genres, ratings, release years, countries, and content types.
 
 ---
 
-## 🤖 GenAI-Powered RFP Response Automation
+### 👥 [PeoplesFirst - HR Analytics Dashboard](./PeoplesFirst%20-%20HR%20Analytics%20Dashboard)
 
-**Domain:** Generative AI
+**Technologies:** Tableau
 
-### Overview
-Built a Retrieval-Augmented Generation (RAG) application that retrieves relevant document content using vector embeddings and generates context-aware responses to RFP questions using Large Language Models.
-
-**Workflow**
-
-```
-Documents
-      ↓
-Document Processing
-      ↓
-Chunking
-      ↓
-Embeddings
-      ↓
-ChromaDB
-      ↓
-Similarity Search
-      ↓
-LLM
-      ↓
-Generated Response
-```
-
-**Skills**
-- Python
-- RAG
-- ChromaDB
-- LLMs
-- Streamlit
+A human resources analytics dashboard that visualizes workforce demographics, employee distribution, and organizational insights to support HR decision-making.
 
 ---
 
-## ❤️ Heart Disease Prediction using Machine Learning
+# 📊 Data Analytics Projects
 
-**Domain:** Machine Learning
+### 🚗 [Automobile Price Analysis using Exploratory Data Analysis](./Automobile%20Price%20Analysis%20using%20Exploratory%20Data%20Analysis)
 
-### Overview
-Developed a classification model to predict heart disease based on patient health indicators using supervised machine learning techniques.
+**Technologies:** Python, Pandas, Matplotlib, Seaborn
 
-**Skills**
-- Classification
-- Scikit-learn
-- Python
+An exploratory data analysis project focused on understanding automobile pricing, identifying trends, and uncovering relationships between vehicle attributes.
 
 ---
 
-## 🏦 Loan Approval Data Analysis and Visualization
+### 🏦 [Loan Approval Data Analysis and Visualization](./Loan%20Approval%20Data%20Analysis%20and%20Visualization)
 
-**Domain:** Data Analytics
+**Technologies:** Python, Pandas, Matplotlib, Seaborn
 
-### Overview
-Performed exploratory analysis on loan application data to understand approval patterns, applicant characteristics, and influential financial factors.
-
-**Skills**
-- Python
-- EDA
-- Data Cleaning
+A data analytics project that explores loan application data to identify patterns influencing loan approval decisions through statistical analysis and visualization.
 
 ---
 
-## 🎬 Netflix Content Analytics Dashboard
+# 🤖 Machine Learning Projects
 
-**Domain:** Business Intelligence
+### ❤️ [Heart Disease Prediction using Machine Learning](./Heart%20Disease%20Prediction%20using%20Machine%20Learning)
 
-### Overview
-Created an interactive Tableau dashboard to analyze Netflix content based on genre, ratings, release year, country, and content distribution.
+**Technologies:** Python, Scikit-learn
 
-**Skills**
-- Tableau
-- Dashboard Design
-- Data Visualization
+A supervised machine learning model developed to predict the likelihood of heart disease based on patient health indicators.
 
 ---
 
-## 👥 PeoplesFirst HR Analytics Dashboard
+### 🚘 [Automobile Price Prediction using Regression](./Automobile%20Price%20Prediction%20using%20Regression)
 
-**Domain:** HR Analytics
+**Technologies:** Python, Scikit-learn
 
-### Overview
-Designed an HR dashboard to visualize workforce metrics, employee demographics, and organizational insights that support strategic HR decision-making.
-
-**Skills**
-- Tableau
-- HR Analytics
-- Dashboard Development
+A regression-based machine learning project that predicts automobile prices using dealership data through feature engineering and model evaluation.
 
 ---
 
-## 🧠 MBTI Personality Prediction using NLP
+### 🧠 [MBTI Personality Prediction using Natural Language Processing](./MBTI%20Personality%20Prediction%20using%20Natural%20Language%20Processing)
 
-**Domain:** Machine Learning & NLP
+**Technologies:** Python, NLP, Scikit-learn
 
-### Overview
-Developed a personality prediction model using natural language processing techniques to classify MBTI personality types from textual data.
-
-**Skills**
-- NLP
-- Python
-- Machine Learning
+A Natural Language Processing project that predicts MBTI personality types from user-generated text using machine learning techniques.
 
 ---
 
-## 🩺 Pneumonia Detection from Chest X-rays using CNN
+# 🐍 Python Projects
 
-**Domain:** Deep Learning
+### 👤 [Face Recognition-Based Attendance System](./Face%20Recognition-Based%20Attendance%20System)
 
-### Overview
-Implemented a Convolutional Neural Network (CNN) using transfer learning to classify chest X-ray images as **Normal** or **Pneumonia**. The project also includes a Flask web application for inference.
+**Technologies:** Python, OpenCV, Face Recognition
 
-**Workflow**
-
-```
-Chest X-ray
-      ↓
-Preprocessing
-      ↓
-CNN Model
-      ↓
-Prediction
-      ↓
-Flask Web App
-```
-
-**Skills**
-- TensorFlow
-- Keras
-- CNN
-- Flask
-- OpenCV
+A computer vision application that identifies registered individuals and automatically records attendance using facial recognition technology.
 
 ---
 
-## 📈 Swasthik Sales Performance Dashboard and Forecasting
+### 🔊 [Text-to-Speech Converter using Python](./Text-to-Speech%20Converter%20using%20Python)
 
-**Domain:** Business Intelligence
+**Technologies:** Python, Tkinter, gTTS
 
-### Overview
-Developed a Power BI dashboard to monitor sales performance, analyze historical sales data, and support forecasting for business planning.
-
-**Skills**
-- Power BI
-- Sales Analytics
-- Forecasting
+A desktop application that converts text into speech through an intuitive graphical user interface, providing an accessible text-to-audio solution.
 
 ---
 
-## 🔊 Python-Based Text-to-Speech Application
+# 📑 Excel Projects
 
-**Domain:** Python Application
+### 📊 [Business Data Analysis using Microsoft Excel](./Business%20Data%20Analysis%20using%20Microsoft%20Excel)
 
-### Overview
-Built a desktop application that converts text into speech using Python, providing an interactive interface for speech synthesis.
+**Technologies:** Microsoft Excel
 
-**Skills**
-- Python
-- Text-to-Speech
-- GUI Development
+A collection of Excel-based projects demonstrating data cleaning, pivot tables, dashboards, formulas, reporting, and business analysis techniques.
 
 ---
 
-# 🛠️ Repository Structure
+# 🛠️ Tools & Technologies
 
-```
-Projects/
-│
-├── Automobile Price Analysis using EDA/
-├── Connect Hub Customer Support Analytics Dashboard/
-├── Automobile Sales Price Prediction using Regression/
-├── Business Data Analysis using Excel/
-├── Face Recognition-Based Attendance System/
-├── GenAI-Powered RFP Response Automation/
-├── Heart Disease Prediction using Machine Learning/
-├── Loan Approval Data Analysis and Visualization/
-├── Netflix Content Analytics Dashboard/
-├── PeoplesFirst HR Analytics Dashboard/
-├── MBTI Personality Prediction using NLP/
-├── Pneumonia Detection from Chest X-rays using CNN/
-├── Swasthik Sales Performance Dashboard and Forecasting/
-├── Python-Based Text-to-Speech Application/
-│
-├── README.md
-└── .gitignore
-```
+| Category | Tools |
+|----------|-------|
+| Programming | Python, SQL |
+| Data Analysis | Pandas, NumPy, Excel |
+| Visualization | Matplotlib, Seaborn, Power BI, Tableau |
+| Machine Learning | Scikit-learn |
+| Deep Learning | TensorFlow, Keras |
+| Computer Vision | OpenCV, Face Recognition |
+| NLP & GenAI | LLMs, RAG, ChromaDB |
+| Web Frameworks | Flask, Streamlit |
+| GUI Development | Tkinter |
 
 ---
 
-# ⭐ Highlights
+# ⭐ Repository Highlights
 
-- 14 End-to-End Projects
-- Machine Learning & Deep Learning
-- Generative AI & RAG
-- Computer Vision
-- Natural Language Processing
-- Power BI Dashboards
-- Tableau Dashboards
-- Python Applications
-- Business Analytics
-- HR Analytics
-- Sales Analytics
+- 📁 14 End-to-End Projects
+- 🤖 Machine Learning & Deep Learning
+- 🧠 Generative AI & Retrieval-Augmented Generation (RAG)
+- 👁️ Computer Vision Applications
+- 💬 Natural Language Processing
+- 📊 Power BI Dashboards
+- 📈 Tableau Dashboards
+- 🐍 Python Applications
+- 📉 Data Analytics & Visualization
+- 📑 Microsoft Excel Projects
 
 ---
 
-## 👩‍💻 Author
+## 👩‍💻 About Me
 
-**Chaitra Pamidi**
+I'm passionate about solving real-world problems through data. My interests include **Data Science, Machine Learning, Artificial Intelligence, Business Intelligence, and Generative AI**. I enjoy building end-to-end solutions—from data preprocessing and model development to interactive dashboards and deployable applications.
 
-**Data Science | Machine Learning | Generative AI | Business Intelligence**
+⭐ **Thank you for visiting my portfolio!**
