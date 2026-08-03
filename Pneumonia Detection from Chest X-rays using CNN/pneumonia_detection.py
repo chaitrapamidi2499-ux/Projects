@@ -53,7 +53,7 @@ model_03 = Model(
 # -----------------------------
 
 model_03.load_weights(
-    r"E:\All My Projects\Projects\Pneumonia detection using CNN\model_weights\vgg19_model_01.keras"
+    r"E:\All My Projects\Projects\Pneumonia Detection from Chest X-rays using CNN\model_weights\vgg19_model_01.keras"
 )
 
 print("Model loaded successfully.")
