@@ -1,197 +1,278 @@
-# Pneumonia Detection Using Deep Learning
+# 🩻 Pneumonia Detection from Chest X-rays using Deep Learning (VGG19)
 
-## Overview
-This project leverages deep learning to detect pneumonia from chest X-ray images using a pre-trained VGG19 model. The dataset, sourced from Kaggle, contains X-ray images categorized as "Pneumonia" or "Normal". The application includes a Flask-based web interface for user interaction.
+## 📌 Project Overview
 
----
+Pneumonia is a serious lung infection that can be life-threatening if not diagnosed and treated early. Chest X-ray imaging is one of the most widely used diagnostic methods for detecting pneumonia. This project develops a deep learning model capable of automatically classifying chest X-ray images as **Pneumonia** or **Normal** using Transfer Learning with the VGG19 architecture.
 
-## Video Demo
-
-Here's a video demo of the project:
-
-https://github.com/user-attachments/assets/7db7732e-b604-4c29-9aa5-0d62a7017ae6
+The project covers the complete deep learning workflow, including data preprocessing, image augmentation, model development, training, evaluation, model saving, and deployment through a Flask web application for real-time predictions.
 
 ---
 
-## Features
-- Utilizes transfer learning with the VGG19 model for efficient feature extraction.
-- Employs advanced data augmentation techniques for robust model training.
-- Implements early stopping and learning rate reduction to optimize training.
-- Flask web application for user-friendly pneumonia detection.
+## 🎯 Problem Statement
+
+Manual examination of chest X-ray images requires experienced radiologists and can be time-consuming, especially in regions with limited healthcare resources.
+
+The objective of this project is to develop an automated image classification system that assists in detecting pneumonia from chest X-ray images using Convolutional Neural Networks (CNNs).
 
 ---
 
-## Tools & Libraries
-The project uses the following libraries and tools:
+## 🎯 Objectives
 
-- **Deep Learning Frameworks:**
-  - TensorFlow
-  - Keras
-- **Data Processing:**
-  - Pandas
-  - NumPy
-- **Image Processing:**
-  - OpenCV
-  - Pillow (PIL)
-- **Web Framework:**
-  - Flask
+- Build an automated pneumonia detection system.
+- Apply Transfer Learning using the VGG19 architecture.
+- Improve model generalization through image augmentation.
+- Compare predicted labels with actual chest X-ray images.
+- Save the trained model for future inference.
+- Deploy the model using Flask for user-friendly image prediction.
 
 ---
 
-## Dataset
-- **Source:** [Chest X-Ray Images (Pneumonia) on Kaggle](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
-- **Description:**
-  - Contains 5,863 JPEG X-ray images in two categories: Pneumonia and Normal.
-  - Images are organized into three folders: `train`, `test`, and `val`.
-  - Pediatric patients (1 to 5 years old) from Guangzhou Women and Children’s Medical Center.
+## 📂 Dataset
 
----
+**Dataset:** Chest X-ray Images (Pneumonia)
 
-## What, How, and Why
-### What
-This project focuses on developing a deep learning model to classify chest X-rays into two categories: "Pneumonia" or "Normal". The goal is to assist healthcare professionals in early diagnosis.
+The dataset contains chest X-ray images divided into two classes:
 
-### How
-1. Preprocess the dataset using TensorFlow's `ImageDataGenerator`.
-2. Fine-tune a pre-trained VGG19 model for feature extraction.
-3. Train the model with custom layers for binary classification.
-4. Evaluate the model's performance using test data.
-5. Deploy the model using a Flask-based web application.
+- NORMAL
+- PNEUMONIA
 
-### Why
-Pneumonia is a significant global health concern, especially in children. Early detection can drastically improve treatment outcomes. Automating the detection process using AI can:
-- Reduce diagnostic errors.
-- Save time for healthcare professionals.
-- Increase accessibility in low-resource settings.
+### Dataset Structure
 
----
-
-## Challenges and Benefits
-### Challenges
-- **Data Quality:** Ensuring all images are high-quality and accurately labeled.
-- **Class Imbalance:** Addressing the imbalance in the number of images for each category.
-- **Model Overfitting:** Preventing overfitting on the training data.
-- **Generalization:** Ensuring the model performs well on unseen data.
-
-### Benefits
-- **Efficiency:** Speeds up the diagnostic process.
-- **Accessibility:** Provides a cost-effective solution for pneumonia screening.
-- **Accuracy:** Reduces human errors in diagnosis.
-- **Scalability:** Can be deployed widely in hospitals and remote clinics.
-
----
-
-## Advantages and Disadvantages
-### Advantages
-- **High Accuracy:** Leveraging pre-trained models improves detection accuracy.
-- **Time-Saving:** Automates the diagnostic process.
-- **Cost-Effective:** Reduces dependency on expensive manual labor.
-- **User-Friendly:** Simple Flask interface for non-technical users.
-
-### Disadvantages
-- **Dependence on Data:** Requires large, high-quality datasets for training.
-- **Interpretability:** Deep learning models often act as a "black box" with limited explainability.
-- **Hardware Requirements:** Demands significant computational resources.
-- **Limited Scope:** May not generalize well to datasets from different demographics.
-
----
-
-## Preprocessing and Augmentation
-The dataset was preprocessed using TensorFlow's `ImageDataGenerator` to include:
-- Rescaling pixel values.
-- Rotation, flipping, zooming, and shearing for data augmentation.
-
----
-
-## Model Architecture
-The project employs the VGG19 architecture with modifications:
-- **Base Model:** Pre-trained VGG19 network with weights from ImageNet.
-- **Custom Layers:**
-  - Flatten layer
-  - Fully connected Dense layers
-  - Dropout for regularization
-  - Output layer with sigmoid activation for binary classification
-- **Optimization Algorithms:**
-  - SGD
-  - RMSprop
-  - Adam
-- **Callbacks:**
-  - ModelCheckpoint
-  - EarlyStopping
-  - ReduceLROnPlateau
-
----
-
-## Implementation
-### Installation
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/thatritikpatel/Pneumonia-Detection-Using-Deep-Learning.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd pneumonia-detection
-   ```
-3. Install the required libraries:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-### Dataset Setup
-1. Download the dataset from [Kaggle](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia).
-2. Extract the dataset and place it in the `data/` folder.
-
-### Training the Model
-Run the training script to train the model:
-```bash
-python train.py
+```text
+chest_xray/
+│
+├── train/
+│   ├── NORMAL/
+│   └── PNEUMONIA/
+│
+├── val/
+│   ├── NORMAL/
+│   └── PNEUMONIA/
+│
+└── test/
+    ├── NORMAL/
+    └── PNEUMONIA/
 ```
 
-### Running the Flask App
-Start the Flask server:
-```bash
-python app.py
+The dataset is organized into separate training, validation, and testing folders to support model development and evaluation.
+
+---
+
+## 🛠️ Technologies Used
+
+- Python
+- TensorFlow
+- Keras
+- OpenCV
+- NumPy
+- Matplotlib
+- Scikit-image
+- Flask
+- HTML
+- CSS
+
+---
+
+## ⚙️ Project Workflow
+
+1. Load the chest X-ray dataset.
+2. Perform image preprocessing.
+3. Resize images to **128 × 128** pixels.
+4. Apply image augmentation.
+5. Build a CNN using VGG19 Transfer Learning.
+6. Train the model.
+7. Validate model performance.
+8. Save the trained model.
+9. Deploy the model using Flask.
+10. Predict pneumonia from uploaded X-ray images.
+
+---
+
+## 🧹 Image Preprocessing
+
+The following preprocessing steps were applied:
+
+- Image resizing (128 × 128)
+- RGB image conversion
+- Pixel normalization (1/255)
+- Data augmentation
+
+### Image Augmentation Techniques
+
+- Random Rotation
+- Horizontal Flip
+- Width Shift
+- Height Shift
+- Shear Transformation
+
+These augmentation techniques improve model robustness and reduce overfitting.
+
+---
+
+## 🧠 Model Architecture
+
+The project uses **Transfer Learning** with the pretrained **VGG19** architecture.
+
+### Base Model
+
+- VGG19
+- ImageNet pretrained weights
+- Top layers removed (`include_top=False`)
+- Base layers frozen during training
+
+### Custom Classification Head
+
+- Flatten Layer
+- Dense Layer (4608 neurons, ReLU)
+- Dropout (0.2)
+- Dense Layer (1152 neurons, ReLU)
+- Output Layer (2 neurons, Softmax)
+
+This architecture enables the model to leverage pretrained image features while learning pneumonia-specific patterns.
+
+---
+
+## ⚙️ Training Configuration
+
+### Optimizer
+
+- SGD (Stochastic Gradient Descent)
+
+### Learning Rate
+
+- 0.0001
+
+### Loss Function
+
+- Categorical Crossentropy
+
+### Callbacks Used
+
+- EarlyStopping
+- ModelCheckpoint
+- ReduceLROnPlateau
+
+These callbacks help improve training efficiency and reduce overfitting.
+
+---
+
+## 📈 Model Training
+
+The model was trained using:
+
+- ImageDataGenerator
+- Batch image loading
+- Data augmentation
+- Validation dataset monitoring
+- Early stopping for improved generalization
+
+The trained model was saved in Keras format for deployment.
+
+---
+
+## 💻 Flask Web Application
+
+A Flask-based web application was developed to make the model accessible through a graphical user interface.
+
+### Features
+
+- Upload Chest X-ray image
+- Automatic preprocessing
+- Real-time prediction
+- Displays prediction as:
+  - Normal
+  - Pneumonia
+
+This allows users to interact with the trained model without requiring programming knowledge.
+
+---
+
+## 📊 Prediction Workflow
+
+```text
+Chest X-ray Image
+        │
+        ▼
+Image Upload
+        │
+        ▼
+Preprocessing
+        │
+        ▼
+Resize & Normalize
+        │
+        ▼
+VGG19 CNN Model
+        │
+        ▼
+Softmax Classification
+        │
+        ▼
+Prediction
+(Normal / Pneumonia)
 ```
-Access the web application at `http://127.0.0.1:5000/`.
 
 ---
 
-## File Structure
+## 💡 Key Features
+
+- End-to-end deep learning pipeline
+- Transfer Learning using VGG19
+- Image augmentation
+- Binary image classification
+- Flask web deployment
+- Real-time prediction
+- Saved model for inference
+
+---
+
+## 📚 Key Learnings
+
+- Gained hands-on experience with medical image classification.
+- Learned Transfer Learning using pretrained CNN models.
+- Understood image preprocessing techniques for deep learning.
+- Applied data augmentation to improve model robustness.
+- Learned to deploy deep learning models using Flask.
+- Built a complete AI application from model training to deployment.
+
+---
+
+## 📁 Repository Structure
+
+```text
+Pneumonia Detection from Chest X-rays using CNN/
+│
+├── app.py
+├── Pneumonia_Detection.ipynb
+├── model.keras
+├── model_weights/
+├── chest_xray/
+├── test_pneumonia_normal/
+├── static/
+│   ├── css/
+│   ├── js/
+│   └── images/
+├── templates/
+├── uploads/
+├── requirements.txt
+└── README.md
 ```
-.
-├── app.py              # Flask application
-├── train.py            # Model training script
-├── data/               # Dataset folder
-├── static/             # Static files (CSS, JS)
-├── templates/          # HTML templates
-├── models/             # Saved models
-├── utils/              # Utility scripts
-├── requirements.txt    # Dependencies
-└── README.md           # Project documentation
-```
 
 ---
 
-### Visualizations
-Confusion matrix, training/validation loss, and accuracy plots are included in the report.
+## 🚀 Future Improvements
+
+- Fine-tune VGG19 layers for improved performance.
+- Compare multiple CNN architectures such as ResNet50, DenseNet121, and EfficientNet.
+- Perform hyperparameter tuning.
+- Generate Grad-CAM visualizations to explain model predictions.
+- Deploy the application on a cloud platform for public access.
+- Extend the model to classify multiple chest diseases instead of binary classification.
 
 ---
 
-## References
-- [Original Dataset Publication](http://www.cell.com/cell/fulltext/S0092-8674(18)30154-5)
-- [Mendeley Data](https://data.mendeley.com/datasets/rscbjbr9sj/2)
+## 👩‍💻 Author
 
----
+**Chaitra Pamidi**
 
-## License
-This project is licensed under the CC BY 4.0 License. See the [LICENSE](LICENSE) file for details.
-
----
-
-## Acknowledgements
-Special thanks to the creators of the dataset and the research team for their valuable contributions to pneumonia detection.
-
-## Contact
-- Ritik Patel - [https://www.linkedin.com/in/thatritikpatel/]
-
-- Project Link: [https://github.com/thatritikpatel/Pneumonia-Detection-Using-Deep-Learning]
+Aspiring Data Scientist | Deep Learning | Computer Vision | Artificial Intelligence
