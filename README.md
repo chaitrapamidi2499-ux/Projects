@@ -2,7 +2,7 @@
 
 Welcome to my portfolio repository! 👋
 
-This repository brings together **14 end-to-end projects** across **Data Analytics, Business Intelligence, Machine Learning, Deep Learning, Computer Vision, Natural Language Processing, and Generative AI**. Each project solves a real-world business or technical problem using industry-standard tools, and each one ships with its own `README.md` and a `Demo/` folder containing the outputs and key insights.
+This repository brings together **14 end-to-end projects** across **Data Analytics, Business Intelligence, Machine Learning, Deep Learning, Computer Vision, Natural Language Processing, and Generative AI**. Each project solves a real-world business or technical problem using industry-standard tools.
 
 ---
 
