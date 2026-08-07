@@ -132,7 +132,7 @@ The notebook includes:
 
 ---
 
-# 📸 Sample Outputs
+# 📸 Outputs
 
 <img width="1237" height="881" alt="dataset_describe" src="https://github.com/user-attachments/assets/b7df77dc-bfe8-4d9d-8213-4c30524101d7" />
 <img width="1252" height="912" alt="dataset_overview" src="https://github.com/user-attachments/assets/d6dbe9b9-bb23-4195-9c31-80cc1125e9c6" />
