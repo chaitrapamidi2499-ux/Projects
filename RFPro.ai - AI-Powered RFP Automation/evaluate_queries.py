@@ -2,7 +2,7 @@ import pandas as pd
 from answering import query_rag_with_varag  # ✅ Import from above file
 
 # ✅ Load CSV of questions
-CSV_PATH = r"E:\All My Projects\Capstone\Capstone\GenAI_RFP_Question_Data_Input_Jun_2024_25.xlsx - Sample 25 RFP Questions.csv"
+CSV_PATH = r"E:\Capstone\GenAI_RFP_Question_Data_Input_Jun_2024_25.xlsx - Sample 25 RFP Questions.csv"
 df = pd.read_csv(CSV_PATH)
 
 results = []

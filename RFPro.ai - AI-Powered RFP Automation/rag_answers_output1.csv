@@ -1,0 +1,114 @@
+Question,Answer
+Provide a detailed description of the proposed solution.,"The solution described is the ""POST object"" API method, which ""uploads an object or new version of an object from a form"" and requires ""Write"" permission."
+What are the scalability options for the proposed solution?,"The context discusses scaling in a few ways:
+
+*   Distributing workload across multiple Storage Nodes to maximize speed and connection capacity. ""Load balancing maximizes speed and connection capacity across multiple Storage Nodes.""
+*   Using the StorageGRID Load Balancer service, installed on all Admin Nodes and all Gateway Nodes, for Layer 7 load balancing. ""The StorageGRID Load Balancer service is installed on all Admin Nodes and all Gateway Nodes and provides Layer 7 load balancing."" It routes more requests to Storage Nodes with higher CPU availability. ""Through a weighting process, the Load Balancer service routes more requests to Storage Nodes with higher CPU availability.""
+*   Using a third-party load balancer as an alternative. ""Although the StorageGRID Load Balancer service is the recommended load balancing mechanism, you might want to integrate a third-party load balancer instead.""
+*   Doubling the RAM and CPU allocation for virtual Storage Nodes to provide similar resources to StorageGRID appliance nodes. ""For example, doubling the RAM and CPU allocation for virtual Storage Nodes would provide similar resources to those provided for StorageGRID appliance nodes."" Also, increasing RAM per node to 48 GB or more if the amount of metadata per node exceeds 500 GB. ""Additionally, if the amount of metadata per node exceeds 500 GB, consider increasing the RAM per node to 48 GB or more.""
+*   Using a single VM for each StorageGRID node and sizing the VM accordingly. ""If you are using virtual machines as hosts and have control over the size and number of VMs, you should use a single VM for each StorageGRID node and size the VM accordingly.""
+*   Providing adequate network bandwidth for hosts, based on the number and type of StorageGRID nodes running on that host. ""To avoid introducing a bottleneck, SAN bandwidth for a given host should roughly match the aggregate Storage Node network bandwidth for all Storage Nodes running on that host."""
+Scalability - min and max capacity and number of objects supported,"Based on the provided documents:
+
+*   **HCP_v9_6_3_Release_Notes | Page 9**: Mentions a support limit of 64,000,000,000 objects (80 nodes times 800,000,000 objects per node). If using 1.9 TB SSD drives: 100,000,000,000 objects (80 nodes times 1,250,000,000 objects per node).
+*   **NetApp StorageGrid 11 8 Complete Document**: Does not explicitly state overall minimum and maximum capacity and object count for the entire system. However, it does provide information on LUN sizes and storage requirements for different node types, which could be used to calculate the capacity for specific configurations.
+
+Therefore, the answer is: For Hitachi Content Platform, the object count scalability is up to 64,000,000,000 objects or 100,000,000,000 objects (if using 1.9 TB SSD). NetApp StorageGrid 11.8 Complete Document does not specify the overall object count."
+"No SPOF (Single Point of Failure) components – for software defined, how does your software report and manage failed components? Are there any SPOF in any piece of the architecture - hardware, software, or both? If no, please explain how this is accomplished.","The software is self-healing, so intervention is not often required for recovery from unexpected events. However, events that may require intervention include power outages and hardware failures. To protect against a catastrophic failure of an HCP system, replication can be implemented. When this is done, you are responsible not only for configuring the connections between the systems involved but also for managing failover and recovery should that become necessary.
+Both whole-object protection and erasure-coded protection provide support for disaster recovery in case of catastrophic system failure. With whole-object protection, if a single system fails, the object data can be recovered to the replacement system from any remaining system where the replicated objects are not metadata-only. If two or more systems fail concurrently, whole-object protection can still provide support for disaster recovery. With erasure-coded protection, if a single system fails, object data can be reconstructed on the replacement system from the chunks on all the remaining systems in the erasure coding topology. If two or more systems fail concurrently, object data cannot be reconstructed and may be permanently lost.
+To detect protection violations, the Protection service checks that for each object in a given namespace, at any given point in the object lifecycle:
+*   The total number of existing copies of object data is equal to the total number of copies of object data that are currently required to exist on all of the storage tiers defined for the namespace by its service plan
+*   If copies of the object data are stored on primary running storage or primary spindown storage:
+*   Each copy of the object data is stored on a different node
+*   All copies of the object data are stored in the same protection set
+*   Each copy of the object data is accessible
+A violation occurs when any one of these conditions is not true. The Protection service can repair these violations."
+"Does the solution have automatic failure notification via email, text, and other methods?","Based on the provided context, the solution supports automated failure notifications via email.
+
+Specifically:
+*   ""StorageGRID system can automatically send email and SNMP notifications when an alarm is triggered or a service state changes.""
+*   ""For email notifications, you must configure the email server and specify the email recipients.""
+*   ""An email notification is sent when the major or critical condition for an alert rule is met. Notifications aren’t sent for minor alerts.""
+*   ""Send email about log messages with a severity level of notice, warning, or error."""
+"Can access to reporting features be segregated by users/roles? If so, please explain.",Not enough information is available in the retrieved content.
+"Does the solution have reporting related to system health? If so, please explain the reporting and the granularity. ","Yes, the solution offers system health reporting capabilities.
+
+The available reports:
+*   Health check reports can be prepared, downloaded, canceled, and the status can be retrieved.
+*   Health check reports can be prepared only on nodes that are running and available.
+*   The health check reports archive can be downloaded at any time after the health check reports are successfully prepared.
+*   The system runs a health diagnostic tool on the available nodes in the cluster that runs various signatures to collect information about the health of the HCP nodes.
+*   Signatures are classified into components and types (info and issue). Components include items such as replication, admin, or JVM. Info signatures collect node configuration information such as memory configuration, HCP version, hot fixes, and other HCP configurations. Issue signatures report if a node either is experiencing a certain issue or is at risk of experiencing an issue, such as server issues, object issues, repeated node restarts, or other general issues.
+
+Level of granularity:
+*   Performance metrics category provides information about system events and can be used to monitor system status.
+*   Signatures are JSON files containing different shell commands that gather configuration information and collect data on potential issues related to the health of a node."
+"Product reporting - including chargeback for tenant capacity, performance usage and product health",Not enough information is available in the retrieved content.
+Describe all the security features of the proposed solution.,"Based on the provided documents, here's an overview of some security features related to StorageGrid and Hitachi Content Platform (HCP):
+
+**StorageGrid:**
+
+*   **Security tasks:** Managing security certificates, internal firewall controls, key management servers, security settings (TLS and SSH policy, network and object security options, interface security settings), and settings for storage or admin proxies.
+*   **TLS and SSH Policy:** Selecting a security policy to determine protocols and ciphers for secure TLS and SSH connections, controlling data encryption in motion. The default ""Modern"" policy is recommended unless Common Criteria compliance or other ciphers are needed.
+*   **Logs and Audit Messages:** Protecting StorageGrid logs and audit message output securely.
+
+**HCP:**
+
+*   Managing domains and SSL server certificates.
+*   Controlling access to the System Management Console and the HCP management API.
+*   Configuring support for Windows AD or Windows workgroups.
+*   Enabling or disabling the use of SNMP for modifying system settings.
+*   Optionally, configuring HCP to send system log messages to syslog servers, SNMP managers, and/or specified email addresses.
+*   Network Security Settings: Including enabling/disabling ping responses, SSH access, node status exposure, SSL renegotiation, restricting anonymous access with CIFS, and preventing data access with SMBv1.
+*   Front-end SSL Ciphers: Configuring security protocols for front-end communications and replication, including selecting the minimum security protocol (e.g., TLSv1.2) and enabling/disabling specific IANA Cipher Names.
+*   System Events Monitoring: Specifically, the ability to view ""Security Events"" with details on ""User"", ""Severity"", ""Date"", and ""Event"", allowing for filtering and searching of system security logs."
+"Please specify how data at rest encryption is provided (e.g. underlying server/disk encryption, software-based server-side encryption, client provided Keys?)","Based on the provided text, here's a breakdown of the data at rest encryption methods available:
+
+*   **S3 object server-side encryption with customer-provided keys (SSE-C):** ""You issue an S3 request to store an object and include three request headers...Keys are managed outside of StorageGRID.""
+*   **External volume or datastore encryption:** ""You use an encryption method outside of StorageGRID to encrypt an entire volume or datastore...An external encryption method provides tighter control over encryption algorithms and keys."" In this case, ""All object data, metadata, and system configuration data"" is encrypted.
+*   **Object encryption outside of StorageGRID:** ""You use an encryption method outside of StorageGRID to encrypt object data and metadata before they are ingested into StorageGRID...Object data and metadata only (system configuration data is not encrypted).""
+*   **SSE (server-side encryption with StorageGRID-managed keys):** ""When you issue an S3 request to store an object, StorageGRID encrypts the object with a unique key. When you issue an S3 request to retrieve the object, StorageGRID uses the stored key to decrypt the object."""
+Does the solution support FIPS 140-2 compliant AES 256-bit encryption? Is this compliance selectable or does it demand all or nothing?,"Based on the provided documents, here's what can be inferred regarding FIPS 140-2 validated AES 256-bit encryption:
+
+*   **FIPS 140-2 Support:** ""Support for FIPS 140-2 validated cryptography"" is explicitly mentioned.
+*   **SGF6112 and FIPS NVMe SSDs:** For appliance models containing FIPS NVMe SSDs that you manage using the StorageGRID Appliance Installer and Grid Manager, enable and configure StorageGRID drive encryption.
+*   **Configurable FIPS Mode:** The image caption indicates a configuration setting for `fipsMode` which can be set to `false`, suggesting that FIPS mode is configurable. Also, there are alerts that indicate when the security policy does or does not require FIPS mode and the NetApp Cryptographic Security Module is enabled or disabled.
+
+Therefore, based on the information available, the solution does offer FIPS 140-2 validated cryptography, and the use of FIPS mode appears to be configurable, not a mandatory setting for all encryption processes."
+Product performance capabilities - e.g.  read or written per minute. How many connections can the product sustain,Not enough information is available in the retrieved content.
+Availability and Reliability (Resilience),Not enough information is available in the retrieved content.
+Load balancing customer IO capabilities across nodes in a cluster or across geographic areas within a region,"The StorageGRID Load Balancer service distributes workload across multiple Storage Nodes to maximize speed and connection capacity. The Load Balancer service on each node operates independently when forwarding client traffic to the Storage Nodes and routes more requests to Storage Nodes with higher CPU availability. For high availability, each site in your StorageGRID system should include two or more nodes with the Load Balancer service. For example, a site might include two Gateway Nodes or both an Admin Node and a Gateway Node."
+Replication capabilities between datacentres / data protection against data loss and corruption,"Geo-protection is implemented by the HCP Replication service, which keeps tenants and namespaces on two or more HCP systems in sync with each other. ""Replication entails sending information from the system where the service is running to one or more other systems. The information sent includes tenant and namespace configuration information, metadata and data for newly created objects, metadata changes for existing objects, and instructions to perform delete operations."" If a system in a replication topology becomes unavailable, another system in the topology can provide continued data availability. If a system in a replication topology suffers irreparable damage, another system in the topology can serve as a source for disaster recovery."
+Compression and deduplication capabilities,Not enough information is available in the retrieved content.
+TCP / Application Protocol Support,"Based on the provided documents, the application protocol supported is HTTP."
+RESTful API integration for product management,"HCP supports a ""RESTful, HTTP-based API called REST"" for namespace content access. It also supports a ""Swift-compatible API""."
+"Can reports be produced via REST API or viewed on a GUI - based on node/site and global capacity (total, quota, used, free)? If so, please explain what is available to see and provide sample reports.","The retrieved documents discuss storage reports generated from the HCP System Management Console. These reports include aggregated namespace statistics for each tenant, with details like bytes read and written during a specified reporting interval. The reports are generated in CSV format.
+
+However, the availability of REST API endpoints for generating these reports is not mentioned.
+*""Not enough information is available in the retrieved content.""*"
+Administration capabilities for a multi-tenant product / solution,"Tenants can be administered through the Tenant Management Console and HCP management API. Roles available for these accounts are monitor, system, security, and compliance.
+As a tenant administrator, you are responsible for configuring:
+* Tenant contact information
+* The tenant description
+* The tenant permission mask
+* System-level administrative access to the tenant
+* Access to the Tenant Management Console
+* Access to HCP through the management API
+* Access to the Search Console for the tenant
+
+You are also responsible for creating and managing content classes and content properties for the tenant, creating and maintaining namespaces and managing search and indexing for the namespace. In addition to creating and modifying namespaces, you can delete them, but only if they don’t contain any objects."
+"Product monitoring capabilities - device performance, user experience and storage capacity; over which protocols and interfaces",Not enough information is available in the retrieved content.
+Ability to set and apply archive quotas per tenant,"Yes, you can set storage quotas per tenant. ""If you want this tenant to have a storage quota, a numerical value for the quota and the units."""
+"Data Tiering Capability, including cloud storage endpoints / Hybrid solution","Option 3, ""Please describe the data tiering capabilities of the system, including its support for cloud storage endpoints and hybrid infrastructure configurations,"" best fits the context.
+
+Based on the provided documents, StorageGrid offers data tiering capabilities using Cloud Storage Pools to store objects outside the StorageGRID system. For example, infrequently accessed objects can be moved to lower-cost cloud storage like Amazon S3 Glacier, S3 Glacier Deep Archive, Google Cloud, or Azure Blob storage. Multiple Cloud Storage Pool endpoints can be configured for tiering or backup to more than one cloud, and ILM rules can specify which objects are stored in each pool. Compatible cloud storage endpoints include Amazon S3, Azure Blob Archive tier, and Google Cloud Platform (GCP). Using Cloud Storage Pools with FabricPool is not supported."
+Cloud Interoperability with main stream Cloud hyperscaler,"Based on the context, StorageGRID platform services can help you implement a hybrid cloud strategy by allowing you to send event notifications and copies of S3 objects and object metadata to external destinations. For example, you might use CloudMirror replication to mirror specific customer records into Amazon S3 and then leverage AWS services to perform analytics on your data. You can also reduce the cost of ONTAP storage by tiering data to StorageGRID using FabricPool to public and private clouds including StorageGRID.
+
+However, the document does not provide explicit ""best practices for cloud interoperability with major hyperscalers,"" so I cannot answer the question directly."
+"While there is no requirement for the solution to fit with a private cloud infrastructure, this is a chance for the proponent to showcase its product’s features, it will be used to ensure that the products fit well into company's future direction.","Based on the context:
+
+Option 3 (Direct and concise) is the most suitable:
+
+> Private cloud compatibility is not a required feature; however, proposers are encouraged to demonstrate relevant capabilities as this solution's potential alignment with future infrastructure strategies will be considered.
+
+This option is concise and directly addresses the question of private cloud compatibility, while also encouraging proposers to showcase relevant capabilities, which aligns with the information provided about supported platforms like Google Cloud Platform (GCP)."

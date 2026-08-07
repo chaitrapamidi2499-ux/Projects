@@ -3,8 +3,8 @@ from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 
 # ✅ Paths to your files
-predicted_path =r"E:\All My Projects\Capstone\Capstone\rag_answers_output.csv"
-expected_path = r"E:\All My Projects\Capstone\Capstone\rfp_expected_answers_filled.csv"
+predicted_path =r"E:\Capstone\rag_answers_output.csv"
+expected_path = r"E:\Capstone\Capstone\rfp_expected_answers_filled.csv"
 
 # ✅ Load both files
 pred_df = pd.read_csv(predicted_path)

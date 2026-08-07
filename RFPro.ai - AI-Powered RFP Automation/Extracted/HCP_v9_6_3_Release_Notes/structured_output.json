@@ -1,0 +1,1607 @@
+{
+    "pdf_name": "HCP_v9_6_3_Release_Notes",
+    "text_blocks": [
+        {
+            "type": "text",
+            "page": 1,
+            "content": "Hitachi Content Platform\nHCP Software Version 9.6.3\nHCP Operating System Version 9.6.3\nRelease Notes\nThis document contains release notes for Hitachi Content Platform 9.6.3.\nRN-RC001-103\nMarch 2024"
+        },
+        {
+            "type": "text",
+            "page": 2,
+            "content": "\u00a9 2007, 2024 Hitachi Vantara LLC. All rights reserved..\nNo part of this publication may be reproduced or transmitted in any form or by any means, electronic or mechanical, including copying and recording,\nor stored in a database or retrieval system for commercial purposes without the express written permission of Hitachi, Ltd., or Hitachi Vantara LLC\n(collectively \u201cHitachi\u201d). Licensee may make copies of the Materials provided that any such copy is: (i) created as an essential step in utilization of the\nSoftware as licensed and is used in no other manner; or (ii) used for archival purposes. Licensee may not make any other copies of the Materials.\n\u201cMaterials\u201d mean text, data, photographs, graphics, audio, video and documents.\nHitachi reserves the right to make changes to this Material at any time without notice and assumes no responsibility for its use. The Materials contain\nthe most current information available at the time of publication.\nSome of the features described in the Materials might not be currently available. Refer to the most recent product announcement for information about\nfeature and product availability, or contact Hitachi Vantara LLC at https://support.hitachivantara.com/en_us/contact-us.html.\nNotice: Hitachi products and services can be ordered only under the terms and conditions of the applicable Hitachi agreements. The use of Hitachi\nproducts is governed by the terms of your agreements with Hitachi Vantara LLC.\nBy using this software, you agree that you are responsible for:\n1.\nAcquiring the relevant consents as may be required under local privacy laws or otherwise from authorized employees and other individuals; and\n2.\nVerifying that your data continues to be held, retrieved, deleted, or otherwise processed in accordance with relevant laws.\nNotice on Export Controls. The technical data and technology inherent in this Document may be subject to U.S. export control laws, including the\nU.S. Export Administration Act and its associated regulations, and may be subject to export or import regulations in other countries. Reader agrees to\ncomply strictly with all such regulations and acknowledges that Reader has the responsibility to obtain licenses to export, re-export, or import the\nDocument and any Compliant Products.\nHitachi and Lumada are trademarks or registered trademarks of Hitachi, Ltd., in the United States and other countries.\nAIX, DB2, DS6000, DS8000, Enterprise Storage Server, eServer, FICON, FlashCopy, GDPS, HyperSwap, IBM, OS/390, PowerHA, PowerPC, S/390,\nSystem z9, System z10, Tivoli, z/OS, z9, z10, z13, z14, z15, z16, z/VM, and z/VSE are registered trademarks or trademarks of International Business\nMachines Corporation.\nActive Directory, ActiveX, Bing, Excel, Hyper-V, Internet Explorer, the Internet Explorer logo, Microsoft, Microsoft Edge, the Microsoft corporate logo,\nthe Microsoft Edge logo, MS-DOS, Outlook, PowerPoint, SharePoint, Silverlight, SmartScreen, SQL Server, Visual Basic, Visual C++, Visual Studio,\nWindows, the Windows logo, Windows Azure, Windows PowerShell, Windows Server, the Windows start button, and Windows Vista are registered\ntrademarks or trademarks of Microsoft Corporation. Microsoft product screen shots are reprinted with permission from Microsoft Corporation.\nAll other trademarks, service marks, and company names in this document or website are properties of their respective owners.\nCopyright and license information for third-party and open source software used in Hitachi Vantara products can be found in the product\ndocumentation, at https://www.hitachivantara.com/en-us/company/legal.html.\nHitachi Content Platform Release Notes\n2"
+        },
+        {
+            "type": "text",
+            "page": 3,
+            "content": "Contents\nContent Platform 9.6.3 Release notes - Customer................................... 4\nAbout this document............................................................................................ 4\nRelease highlights................................................................................................4\nUpgrade notes..................................................................................................... 5\nSupported limits................................................................................................... 7\nSupported browsers and platforms....................................................................12\nBrowsers.......................................................................................................12\nPlatforms for HCP VM.................................................................................. 13\nThird-party integrations......................................................................................13\nHitachi API for Amazon S3 tools.................................................................. 14\nMail servers.................................................................................................. 14\nNDMP backup applications.......................................................................... 14\nWindows Active Directory.............................................................................14\nRADIUS protocols........................................................................................ 14\nSystem Monitoring........................................................................................15\nSupported hardware.......................................................................................... 15\nSupported servers........................................................................................ 15\nServer memory.............................................................................................15\nSupported storage platforms........................................................................ 16\nSupported back-end network switches.........................................................16\nRecommendations for HCP back-end network switch configuration...... 17\nSupported Fibre Channel switches.............................................................. 17\nSupported Fibre Channel host bus adapters................................................17\nIssues resolved..................................................................................................18\nIssues resolved in this release..................................................................... 18\nCommon Vulnerabilities and Exposures (CVE) Records and other\nsecurity vulnerabilities resolved in this release (9.6.3)............................20\nCompatibility issues introduced in HCP 8.2 or later...........................................21\nKnown issues............................................................................................... 22\nAccessing product documentation.....................................................................31\nGetting help........................................................................................................31\nComments..........................................................................................................32\nContents\nHitachi Content Platform Release Notes\n3"
+        },
+        {
+            "type": "text",
+            "page": 4,
+            "content": "Content Platform 9.6.3 Release notes - Customer\nAbout this document\nThis document contains release notes for Hitachi Content Platform 9.6.3.\nRelease highlights\nThe HCP version 9.6.3 is a maintenance release that, in addition to resolving several issues,\nadds support for the following appliance components:\n\u25a0\nAdded support for the 3916 RAID controller card with the HCP G11 appliance. G11\nHardware Setup Tool version 3.1 or later is required to support the 3916 RAID controller.\n\u25a0\nAdded support for NVIDIA Mellanox ConnectX-4 Lx SFP28 network interface card on the\nHCP G11 appliance. 25 Gb can be run on both the back-end and the front-end network.\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n4"
+        },
+        {
+            "type": "text",
+            "page": 5,
+            "content": "The release also resolves several software issues observed in prior HCP releases:\n\u25a0\nFixed an S-Node retirement issue, where S Node retirement got stuck, with negative file\nsize usage being reported in the SMC.\n\u25a0\nFixed an upgrade issue where online upgrade to v9.6 or later failed in specific rare\ncircumstances of AD settings after the first upgraded node started using newer messaging\ntype.\n\u25a0\nResolved an issue where the SMC reported an error indicating missing Management\nnetwork IP addresses for nodes that have been retired.\n\u25a0\nResolved an issue that was causing the deletion of empty parent directories to time-out.\n\u25a0\nResolved an issue where arc-deploy could not unmount /tmp/upgrade_root/run when an\nupgrade restarted after a failed attempt.\n\u25a0\nFixed an issue where DNS failover stopped working after the clusters involved in the\nreplication setup were renamed.\n\u25a0\nResolved an issue where domain/DNS aliases were not updated after cluster rename,\ncausing DNS failover to stop working.\n\u25a0\nResolved an issue where putObject and uploadPart requests were failing against HCP\nwhen the supplied requests used Transfer-Encoding: chunked and (an incorrectly\ncalculated) content-length header at the same time.\n\u25a0\nResolved an issue related to management port configuration where the configuration\ninformation was not cleaned up after the management port is disabled. This bug that was\nalso causing issues with new VLAN creation.\n\u25a0\nResolved a log spam issue related to retry logic logging immediately on undetermined\nwrite results, which caused bloating of the JVM logs.\n\u25a0\nDisabled the bash session timeout, which caused SSH sessions to terminate after 15\nminutes, resulting in supportability impact.\n\u25a0\nResolved an issue where the replication finishRecovery process on an A/P replication link\nexperienced long delay before completion.\n\u25a0\nResolved a security vulnerability in the PKCS#11 where the ssh-agent in OpenSSH prior\nto 9.3p2 has an insufficiently trustworthy search path, leading to remote code execution.\n\u25a0\nResolved a security vulnerability in Apache Struts Remote Code Execution.\n\u25a0\nResolved vulnerabilities with HTTP OPTIONS method on port 443 reported by Nessus\nscan.\nUpgrade notes\nHCP upgrades can occur with the system either online or offline. During an online upgrade,\nthe system remains available to users and applications. Offline upgrades are faster than\nonline upgrades, but the system is unavailable while the upgrade is in progress.\nUpgrade notes\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n5"
+        },
+        {
+            "type": "text",
+            "page": 6,
+            "content": "Observe the following increase in upgrade times:\n\u25a0\nOnline upgrades to HCP v9.6.3 from versions other than HCP v9.4.4: Upgrades may take\nup to two additional hours per node for HCP systems using cloud or S Series storage .\nThe upgrade time estimate may vary based on the number of objects in the HCP system\nand how active the HCP system is.\n\u25a0\nOffline upgrades to HCP v9.6.3 from versions other than HCP v9.4.4: Upgrades may take\nan additional 1.5 hours to complete. There is no increase in upgrade time for HCP\nsystems that have no S Series or cloud storage in use as long as all nodes in the HCP\nsystem are being upgraded at the same time.\nNote: This increase in upgrade time occurs only on an HCP v9.6.3 upgrade. It will\nnot be repeated if S Series or cloud Storage is added after upgrading to HCP\nv9.6.3 or if an HCP system is upgraded from v9.6.3 to a later version.\nNote: During an online upgrade, data outages might occur as each node is\nupgraded. Whether data users are affected by an outage depends on the ingest\ntier Data Protection Level (DPL) setting specified in the service plan that's\nassigned to the applicable namespace. No data is lost during a data outage, but\nusers may experience some data-access interruptions.\nWhen upgrading to this release from a version prior to HCP version 9.6, the boot partition on\nthe OS disk gets resized from 199 MB to 499 MB, while the swap partition size is reduced to\n3.7 GB.\nAfter upgrading to this release, new password requirement rules apply to a newly created\npassword when the Install user account\u2019s password is changed next time. The password\nmust be 14 characters or longer, and must include characters from 4 groups of characters.\nFor more information, see the installation manual.\nIn VM environments, the OS disk can now be either 64 GB or 32 GB. New installations\nshould utilize 64 GB OS disk, but any existing system with 32 GB OS disk can be upgraded\nto this release.\nUpgrades to HCP version 9.4.0 or later will fail if any of the namespaces have HSwift protocol\nenabled. Disable HSwift protocol on the relevant namespaces before upgrading. Support for\nHSwift protocol has ended with HCP 9.3.0.\nUpgrades to version 9.2.1 or later will fail if any service plans exist that have SMTP enabled\nand use direct write to HCP S Series Nodes as the primary ingest tier. Please modify these\nservice plans before upgrading to version 9.2.1 or later. For more information, please contact\nyour authorized HCP service provider.\nYou can upgrade an HCP system to version 9.x only from version 8.x. You cannot downgrade\nHCP to an earlier version.\nYou must have at least 32 GB of RAM per node to use new software features introduced in\nHCP version 9.x. While you can upgrade an HCP system to version 9.x with a minimum of 12\nGB of RAM per node and receive the patches and bug fixes associated with the upgrade, the\nsystem cannot use the new software features in the release. Inadequate RAM causes\nperformance degradation and can negatively affect system stability. If you have less than 32\nGB RAM per node and would like to upgrade to this release, contact your Hitachi Vantara\naccount team.\nUpgrade notes\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n6"
+        },
+        {
+            "type": "text",
+            "page": 7,
+            "content": "HCP Data Migrator is no longer supported starting with HCP version 9.4.0. HCP Data\nMigrator was deprecated as of HCP release 9.2.1.\nSupported limits\nHCP supports the limits listed in the following tables.\nHardware\nTable 1 Hardware support limits\nHardware\nSupport limit\nMaximum number of general access, G Series Access Nodes\n80\nMaximum number of HCP S Series Nodes\n80\nKMIP server\nTable 2 KMIP server limits\nHardware\nSupport limit\nMaximum number of KMIP servers\n8\nLogical storage volumes\nTable 3 SAN-attached (SAIN) HDD systems\nLogical volume\nSupport limit\nMaximum number of SAN logical storage volumes per storage node\n63\nMaximum logical volume size for SAN LUNs\n15.999 TB\nTable 4 Internal storage (RAIN) HDD systems\nInternal storage\nSupport limit\nMaximum number of logical storage volumes per storage node RAIN\n4\nMaximum logical volume size on internal drives\nHDD capacity\ndependent\nSupported limits\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n7"
+        },
+        {
+            "type": "text",
+            "page": 8,
+            "content": "Table 5 All-SSD systems (internal storage or SAN-attached)\nInternal storage\nSupport limit\nNumber of SSDs per storage node\n12 (front-cage only)\nMaximum logical volume size on internal drives\nSSD capacity\ndependent\nMaximum number of SAN logical storage volumes per storage node\n(when SAN is attached to system)\n63\nMaximum logical volume size for SAN LUNs (when SAN is attached\nto system)\n15.999 TB\nTable 6 HCP VM systems \u2014 VMware ESXi\nHCP VM systems \u2014 VMware ESXi\nSupport limit\nMaximum number of logical storage volumes per VM\nstorage node\n1 OS LUN, 59 Data LUNs\nMaximum logical volume size\n15.999 TB\nTable 7 HCP VM systems \u2014 KVM\nHCP VM systems \u2014 KVM\nSupport limit\nMaximum number of logical storage\nvolumes per VM storage node\n1 OS LUN\nData LUNs: Limited by the number of device\nslots available for LUNs in the VirtIO-blk\npara-virtualized storage back-end, which\ndepends on the number of other devices\nconfigured for the guest OS that also use\nthe VirtIO-blk back-end. In a typical HCP\nconfiguration, 17 slots are available.\nMaximum logical volume size\n15.999 TB OS LUN\nTable 8 Data storage\nData storage\nSupport limit\nMaximum active erasure coding topologies\n1\nMaximum erasure coding topology size\n6 (5+1) sites\nMinimum erasure coding topology size\n3 (2+1) sites\nSupported limits\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n8"
+        },
+        {
+            "type": "text",
+            "page": 9,
+            "content": "Data storage\nSupport limit\nMaximum total erasure coding topologies\n5\nMaximum number of objects per storage node\nStandard non-SSD disks for\nindexes: 800,000,000\nSSD for indexes: 1,250,000,000\nMaximum number of objects per HCP system\n64,000,000,000 (80 nodes times\n800,000,000 objects per node)\nIf using 1.9 TB SSD drives:\n100,000,000,000 (80 nodes times\n1,250,000,000 objects per node)\nMaximum number of directories per node if one or\nmore namespaces are not optimized for cloud\n1,500,000\nMaximum number of directories per node if all\nnamespaces are optimized for cloud\n15,000,000\nMaximum number of objects per directory\nBy namespace type:\n\u25a0\nHCP namespaces with\nunbalanced directory setting: no\nrestriction\n\u25a0\nHCP namespaces with balanced\ndirectory setting: 30,000,000\nMaximum object size by protocol\n\u25a0\nHTTP: About 2 TB\n(2,194,719,883,008 bytes)\n\u25a0\nHitachi API for Amazon S3:\n\u25cf\nWithout multipart upload:\nAbout 2 TB\n(2,194,719,883,008 bytes)\n\u25cf\nWith multipart upload: 5 TB\n\u25a0\nWebDAV: About 2 TB\n(2,194,719,883,008 bytes)\n\u25a0\nCIFS: 100 GB\n\u25a0\nNFS: 100 GB\nMaximum total KM servers\n8\nHitachi API for Amazon S3: Minimum size for parts in\na complete multipart upload request (except the last\npart)\n1 MB\nHitachi API for Amazon S3: Maximum part size for\nmultipart upload\n5 GB\nSupported limits\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n9"
+        },
+        {
+            "type": "text",
+            "page": 10,
+            "content": "Data storage\nSupport limit\nHitachi API for Amazon S3: Maximum number of\nparts per multipart upload\n10,000\nMaximum number of replication links\n20 inbound, 5 outbound\nMaximum number of tenants\n1,000\nMaximum number of namespaces\n10,000\nMaximum number of namespaces with the CIFS or\nNFS protocol enabled\n50\nTable 9 User groups and accounts\nUser groups and accounts\nSupport limit\nMaximum number of system-level user accounts per HCP\nsystem\n10,000\nMaximum number of system-level group accounts per HCP\nsystem\n100\nMaximum number of tenant-level user accounts per tenant\n10,000\nMaximum number of tenant-level group accounts per tenant\n100\nMaximum number of users in a username mapping file (default\ntenants only)\n1,000\nMaximum number of SSO-enabled namespaces\n~1200 (SPN limit in\nActive Directory)\nTable 10 Custom metadata\nCustom metadata\nSupport limit\nMaximum number of annotations per individual object\n10\nMaximum non-default annotation size with XML checking\nenabled\n1 MB\nMaximum default annotation size with XML checking enabled\n1 GB\nMaximum annotation size (both default and non-default) with\nXML checking disabled\n1 GB\nMaximum number of XML elements per annotation\n10,000\nMaximum level of nested XML elements in an annotation\n100\nSupported limits\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n10"
+        },
+        {
+            "type": "text",
+            "page": 11,
+            "content": "Custom metadata\nSupport limit\nMaximum number of characters in the name of custom\nmetadata annotation\n32\nMaximum form size in POST object upload\n1,000,000 B\nMaximum custom metadata size in POST object upload\n2 KB\nMaximum number of SSO-enabled namespaces\n~1200 (SPN limit in\nActive Directory)\nTable 11 Access control lists\nAccess control lists\nSupport limit\nMaximum size of access control entries per ACL\n1,000 MB\nTable 12 Metadata query engine\nMetadata query engine\nSupport limit\nMaximum number of content classes per tenant\n25\nMaximum number of content properties per content class\n100\nMaximum number of concurrent metadata query API queries\nper node\n5\nTable 13 Network\nNetwork\nSupport limit\nMaximum number of user-defined networks (virtual networks)\nper HCP system\n200\nMaximum downstream DNS servers\n32\nMaximum certificates and CSR per domain\n10\nTable 14 Storage tiering\nStorage tiering\nSupport limit\nMaximum number of storage components\n100\nMaximum number of storage pools\n100\nSupported limits\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n11"
+        },
+        {
+            "type": "text",
+            "page": 12,
+            "content": "Storage tiering\nSupport limit\nMaximum number of tiers in a service plan\n5\nTable 15 Miscellaneous\nMiscellaneous\nSupport limit\nMaximum number of HTTP connections per node\n255\nMaximum number of SMTP connections per node\n100\nMaximum number of attachments per email for SMTP\n50\nMaximum aggregate email attachment size for SMTP\n500 MB\nMaximum number of access control entries in an ACL\n1,000\nMaximum number of labeled retention holds per object\n100\nSupported browsers and platforms\nThe following sections list browsers and platforms that are qualified for use with HCP.\nBrowsers\nThe table below lists the web browsers that are qualified for use with the HCP System\nManagement, Tenant Management, and Search Consoles and the Namespace Browser.\nOther browsers or versions may also work.\nNote: HCP 9.4.0 and later versions no longer support Microsoft Internet Explorer\n\u00ae\n11 because Microsoft no longer supports that browser. As a replacement,\nMicrosoft Edge has been added as a supported browser in addition to Mozilla\nFirefox and Google Chrome.\nBrowser\nClient Operating System\nMicrosoft Edge\nWindows\nMozilla Firefox\n\u00ae\nWindows\nHP-UX\nIBM AIX\nRed Hat Enterprise Linux\nSun Solaris\nSupported browsers and platforms\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n12"
+        },
+        {
+            "type": "text",
+            "page": 13,
+            "content": "Browser\nClient Operating System\nGoogle Chrome\n\u00ae\nWindows\nHP-UX\nIBM AIX\nRed Hat Enterprise Linux\nSun Solaris\n*The Consoles and Namespace Browser work in Internet Explorer only if ActiveX is\nenabled. Also, the Consoles work only if the security level is not set to high.\nNote: To correctly display the System Management Console, Tenant\nManagement Console, and Namespace Browser, the browser window must be at\nleast 1,024 pixels wide by 768 pixels high.\nPlatforms for HCP VM\nHCP VM runs on these platforms:\n\u25a0\nVMware ESXi 6.5 U1 and U2\n\u25a0\nVMware ESXi 6.7 U1, U2, and U3\n\u25a0\nVMware ESXi 7.0 (qualified on hardware version 17)\n\u25a0\nVMware vSAN 6.6\n\u25a0\nVMware vSAN 6.7\n\u25a0\nVMware vSAN 7.0\n\u25a0\nKVM \u2014 qualified on CentOS 7 and Fedora Core 29. For relevant support, configuration,\ninstallation, and usage information, see Deploying an HCP-VM System on KVM\n(MK-94HCP009-06).\nThird-party integrations\nThe following third-party applications have been tested and proven to work with HCP. Hitachi\nVantara does not endorse any of the applications listed below, nor does Hitachi Vantara\nperform ongoing qualification with subsequent releases of the applications or HCP. Use these\nand other third-party applications at your own risk.\nPlatforms for HCP VM\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n13"
+        },
+        {
+            "type": "text",
+            "page": 14,
+            "content": "Hitachi API for Amazon S3 tools\nThese tools are qualified for use with the Hitachi API for Amazon S3:\n\u25a0\nCloudBerry Explorer (does not support multipart upload)\n\u25a0\nCloudBerry Explorer PRO (for HCP multipart upload, requires using an Amazon S3\ncompatible account instead of a HCP account; for CloudBerry internal chunking, requires\nversioning to be enabled on the target bucket)\n\u25a0\nS3 Curl\n\u25a0\nS3 Browser\nMail servers\nThese mail servers are qualified for use with the SMTP protocol:\n\u25a0\nMicrosoft Exchange 2010 (64 bit)\n\u25a0\nMicrosoft Exchange 2013\n\u25a0\nMicrosoft Exchange 2016\nNDMP backup applications\nThese NDMP backup applications are qualified for use with HCP:\n\u25a0\nHitachi Data Protection Suite 8.0 SP4 (CommVault\n\u00ae Simpana\n\u00ae 8.0)\n\u25a0\nSymantec\n\u00ae NetBackup\n\u00ae 7 \u2014 To use NetBackup with an HCP system:\n\u25cf\nConfigure NDMP to require user authentication (that is, select either the Allow\nusername/pwd authenticated operations or Allow digest authenticated operations\noption in the NDMP protocol panel for the default namespace in the Tenant\nManagement Console).\n\u25cf\nConfigure NetBackup to send the following directive with the list of backup paths:\nset TYPE=openPGP\nWindows Active Directory\nHCP is compatible with Active Directory on servers running Windows Server 2012 R2 or\nWindows Server 2016. In either case, all domain controllers in the forest HCP uses for user\nauthentication must minimally be at the 2012 R2 functional level.\nRADIUS protocols\nHCP supports the following RADIUS protocols:\n\u25a0\nCHAP\n\u25a0\nEAPMD5\nHitachi API for Amazon S3 tools\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n14"
+        },
+        {
+            "type": "text",
+            "page": 15,
+            "content": "\u25a0\nMSCHAPv2\n\u25a0\nPAP\nSystem Monitoring\nThe following system monitoring and alerting third-party tools are integrated with HCP and\nexpose their end-points for third-party monitoring, dashboarding, and alerting solutions:\n\u25a0\nPrometheus v2.37.0:\n\u25cf\nPrometheus API documentation: https://prometheus.io/docs/prometheus/2.37/\nquerying/api/\n\u25cf\nQualified visualization of Prometheus metrics with Grafana v9.4\n\u25a0\nAlertmanager (Prometheus Alerting): Alertmanager v0.24.0\nSupported hardware\nThe following sections list hardware that is supported for use in HCP systems.\nNote: The lists of supported hardware are subject to change without notice. For\nthe most recent information on supported hardware, contact your HCP sales\nrepresentative.\nSupported servers\nThese servers are supported for HCP systems with internal storage:\n\u25a0\nHCP G11 (D52BQ-2U)\n\u25a0\nHCP G10 (D51B-2U)\nThese servers are supported for HCP SAN-attached systems with internal storage:\n\u25a0\nHCP G11 (D52BQ-2U)\n\u25a0\nHCP G10 (D51B-2U)\nServer memory\nAt least 32 GB of RAM per node is needed to use new software features introduced in HCP\n9.x. An HCP system can be upgraded to version 9.x with a minimum of 12 GB of RAM per\nnode, and receive the patches and bug fixes that come with the upgrade, but the system\ncannot use the new software features. Inadequate RAM causes performance degradation\nand can negatively affect system stability.\nIf you have less than 32 GB RAM per node and would like to upgrade to HCP 9.x, contact\nyour Hitachi Vantara account team.\nSystem Monitoring\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n15"
+        },
+        {
+            "type": "text",
+            "page": 16,
+            "content": "Supported storage platforms\nThese storage platforms are supported for HCP SAIN systems:\n\u25a0\nHitachi Virtual Storage Platform\n\u25a0\nHitachi Virtual Storage Platform G200\n\u25a0\nHitachi Virtual Storage Platform G400\n\u25a0\nHitachi Virtual Storage Platform G600\n\u25a0\nHitachi Virtual Storage Platform G1000\n\u25a0\nHitachi Virtual Storage Platform G1500\n\u25a0\nHitachi Virtual Storage Platform 5100\n\u25a0\nHitachi Virtual Storage Platform 5100H\n\u25a0\nHitachi Virtual Storage Platform 5200\n\u25a0\nHitachi Virtual Storage Platform 5200H\n\u25a0\nHitachi Virtual Storage Platform 5500\n\u25a0\nHitachi Virtual Storage Platform 5500H\n\u25a0\nHitachi Virtual Storage Platform 5600\n\u25a0\nHitachi Virtual Storage Platform 5600H\n\u25a0\nHitachi Virtual Storage Platform E590\n\u25a0\nHitachi Virtual Storage Platform E790\n\u25a0\nHitachi Virtual Storage Platform E990\n\u25a0\nHitachi Virtual Storage Platform E1090\nSupported back-end network switches\nThe following back-end network switches are supported in HCP systems:\n\u25a0\nAlaxala AX2430\n\u25a0\nArista 7020SR-24C2-R\n\u25a0\nCisco\n\u00ae Nexus\n\u00ae 3K- C31128PQ-10GE\n\u25a0\nCisco\n\u00ae Nexus\n\u00ae 3K-C31108PC-V\n\u25a0\nCisco\n\u00ae Nexus\n\u00ae 5548UP\n\u25a0\nCisco\n\u00ae Nexus\n\u00ae 93180YC-FX\n\u25a0\nCisco\n\u00ae N9K-C93180YC-FX3\n\u25a0\nCisco\n\u00ae 5596UP\n\u25a0\nExtremeSwitching\n\u2122 VDX\n\u00ae 6740\n\u25a0\nExtremeSwitching\n\u2122 210\n\u25a0\nExtremeSwitching\n\u2122 6720 - SAIN systems only\n\u25a0\nHP 4208VL\nSupported storage platforms\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n16"
+        },
+        {
+            "type": "text",
+            "page": 17,
+            "content": "\u25a0\nRuckus ICX\n\u00ae 6430-24\n\u25a0\nRuckus ICX\n\u00ae 6430-24P HPOE\n\u25a0\nRuckus ICX\n\u00ae 430-48\nRecommendations for HCP back-end network switch configuration\nIf an HCP system is using customer-supplied and managed back-end network switches, as in\nthe case for an HCP system hosted on VMware, and the back-end network configuration\nrequires IGMP snooping, configure the back-end as follows:\n\u25a0\nSet the Querier\u2019s IP address: The Querier\u2019s IP address should be set to an IP\naddress within the subnet of the HCP back-end network. This is required for the\nQuerier to detect and manage multicast group membership properly.\nSupported Fibre Channel switches\nThe following Fibre Channel switches are supported for HCP SAIN systems:\n\u25a0\nBrocade 5120\n\u25a0\nBrocade 6510\n\u25a0\nCisco MDS 9134\n\u25a0\nCisco MDS 9148\n\u25a0\nCisco MDS 9148S\nSupported Fibre Channel host bus adapters\nThese Fibre Channel host bus adapters (HBAs) are supported for HCP SAIN systems:\n\u25a0\nEmulex\n\u00ae LPe 32002-M2-Lightpulse\n(for supported firmware and boot BIOS versions, refer to the G11 Hardware Tool set)\n\u25a0\nEmulex\n\u00ae LPe 11002-M4\n(firmware version 2.82a4, boot BIOS 2.02a1)\n\u25a0\nEmulex\n\u00ae LPe 12002-M8\n(firmware version 1.10a5, boot BIOS 2.02a2)\n\u25a0\nEmulex\n\u00ae LPe 12002-M8 (GQ-CC-7822-Y)\n(firmware version 1.10a5, boot BIOS 2.02a2)\n\u25a0\nHitachi FIVE-EX 8Gbps\n(firmware version 10.00.05.04)\nRecommendations for HCP back-end network switch configuration\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n17"
+        },
+        {
+            "type": "text",
+            "page": 18,
+            "content": "Issues resolved\nIssues resolved in this release\nThe following table lists the issue resolved in HCP 9.6.3.\nReference\nNumber\nSR Number\nDescription\nHCP-47099\n04189673,\n04341593\nResolved an issue related to management port\nconfiguration where the configuration information was not\ncleaned up after the management port is disabled. This bug\nalso caused issues with new VLAN creation.\nHCP-47102\n04176117,\n03964645,\n03398188\nResolved an issue where domain/DNS aliases were not\nupdated after renaming a cluster, which caused DNS\nfailover to stop working as expected.\nHCP-47103\n\u2014\nResolved an issue where HCP was not returning a valid\nversionId element for listObjectVersions requests\non versioning-disabled buckets.\nHCP-47105\n\u2014\nResolved an issue where encrypt Cloud Pools options\ndisappear and show only encryption with local key\nmanagement option while updating the service plan name.\nHCP-47106\n\u2014\nResolved an issue where incorrect message content was\nadded to the replication logs related to replication linkId.\nHCP-47107\n\u2014\nResolved an issue that caused the deletion of empty parent\ndirectories to time out.\nHCP-47108\n03210417,\n03226903\nResolved a log spam issue related to retry logic logging\nimmediately on undetermined write results, which caused\nbloating of the JVM logs.\nHCP-47109\n\u2014\nRemoved spring-test v3.0.7 jar from HCP because there\nwere multiple security vulnerabilities reported with the\nSpring v3.0.7 framework.\nHCP-47111\n\u2014\nResolved an issue where putObject and uploadPart\nrequests were failing against HCP when the supplied\nrequests used Transfer-Encoding: chunked and an\nincorrectly calculated content-length header at the same\ntime.\nHCP-47112\n\u2014\nResolved an issue where disk cache is left Enabled on\nupgrades from releases prior to HCP 9.6.\nIssues resolved\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n18"
+        },
+        {
+            "type": "text",
+            "page": 19,
+            "content": "Reference\nNumber\nSR Number\nDescription\nHCP-47113\n04262089,\n03117669\nResolved an issue where the replication finishRecovery\nprocess on an A/P replication link experienced a long delay\nbefore completion.\nHCP-47114\n03020014,\n02989847,\n03020014\nResolved an issue where arc-deploy could not\nunmount /tmp/upgrade_root/run when an upgrade restarted\nafter a failed attempt.\nHCP-47115\n02903116\nResolved a security vulnerability where HCP responded to\nan HTTP OPTIONS request on port 443 to which it was not\nsupposed to respond.\nHCP-47116\n02852874,\n02142039,\n04270639/0\n4226729\nResolved an issue where the SMC reported an error on\nmissing Management network IP addresses for nodes that\nwere retired.\nHCP-47117\n00749017\nResolved an issue where the A/P replication link schedule\ndid not adjust for systems located in different time zones.\nHCP-47118\n04176117\nResolved an issue where DNS failover stopped working\nafter the clusters involved in the replication set up were\nrenamed.\nHCP-47119\n04140600\nResolved an issue involving multi-part objects (MPO) in\nreplication environment, which caused replication lag due to\nMissingMPOMarkerException.\nHCP-47121\n\u2014\nResolved an issue where Cluster_ssh.py output\ncollected excessive length of output that impacted support\nusers.\nHCP-47141\n\u2014\nDisabled the bash session timeout, which caused ssh\nsessions to terminate after 15 minutes, resulting in usability\nimpact.\nHCP-47142\n04371415\nResolved an issue where using the namespace user\ninterface (UI) to create folders and subfolders that have a\nspace in the their names caused duplicate folder names to\nappear in the UI with percent-encoded characters.\nHCP-47242\n04345095\nResolved an upgrade issue where, online upgrade to v9.6\nor later failed in specific rare circumstances of Active\nDirectory settings after the first upgraded node started using\na newer messaging type.\nIssues resolved in this release\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n19"
+        },
+        {
+            "type": "text",
+            "page": 20,
+            "content": "Reference\nNumber\nSR Number\nDescription\nHCP-47313\n\u2014\nResolved an installation issue on G10 systems with rear\ncage SSDs.\nHCP-47370\n03753667,\n04301585,\n04339063,\n04343774,\n04404666\n04426996\nResolved an S Node retirement issue, where S Node\nretirement got stuck, with negative file size usage being\nreported in the SMC.\nHCP-47371\n04336433\nResolved an issue where node status API could not return\nthe correct response code when a cluster was in read-only\nmode and Metadata manager either was not running or was\nspinning trying to create a new map.\nHCP-47748\n\u2014\nAudit daemon (auditd.service) will be disabled on new HCP\ninstallations and upgrades to HCP v9.6.3.\nCommon Vulnerabilities and Exposures (CVE) Records and other security\nvulnerabilities resolved in this release (9.6.3)\nCommon Vulnerabilities and Exposures (CVE) Records and other security vulnerabilities resolved in this\nrelease (9.6.3)\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n20"
+        },
+        {
+            "type": "text",
+            "page": 21,
+            "content": "CVE Record Number\nHitachi Vantara\nreference number\nDescription\nCVE-2023-38408\nHCP-47097\nThe PKCS#11 feature in ssh-agent\nin OpenSSH prior to 9.3p2 has an\ninsufficiently trustworthy search\npath, leading to remote code\nexecution if an agent is forwarded\nto an attacker-controlled system.\nCVE-2023-50164\nHCP-47144\nAn attacker can manipulate file-\nupload parameters to enable paths\ntraversal. Under some\ncircumstances, this can lead to\nuploading a malicious file that can\nbe used to perform Remote Code\nExecution.\nNone\nHCP-47115\nResolved a security vulnerability\nwhere HCP responded to HTTP\nOPTIONS request on port 443,\nwhen it is not supposed to respond.\nCompatibility issues introduced in HCP 8.2 or later\nThe following table lists the compatibility issues introduced in HCP v8.2 or later. The issues\nare listed in ascending order by reference number.\nRef. number\nDescription\nVersion\nintroduced in\nHCP-33074\nHCP-35329\nIn HCP v8.2, the HCP software was upgraded to Jetty\nv9. The upgrade introduces several security\nenhancements that might impact some deployments:\n\u25a0\nHCP no longer supports SSL v1, v2, and v3\nprotocols.\n\u25a0\nHCP conforms more closely to RFC 7230, and no\nlonger allows header folding.\nHCP v8.2\nHCP-33583\nHCP now requires that the x-amz-date header value\nis within 15 minutes of when HCP receives the Hitachi\nAPI for Amazon S3 request.\nHCP v8.2\nHCP-33672\nHCP now validates x-amz-date headers on\nappropriate Hitachi API for Amazon S3 requests.\nHCP v8.2\nCompatibility issues introduced in HCP 8.2 or later\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n21"
+        },
+        {
+            "type": "text",
+            "page": 22,
+            "content": "Ref. number\nDescription\nVersion\nintroduced in\nHCP-35286\nHCP now sends the severity of the EventID/\nmessages such as NOTICE, WARNING or ERROR to\nSyslog servers.\nHCP v8.1\nHCP-37063\nUse case of a namespace, with SMTP enabled\ndirectly writing to HCP S Series Node, is no longer\nsupported.\nHCP v8.2\nHCP-37858\nUse case of a namespace, with SMTP enabled\ndirectly writing to HCP S Series Node, is no longer\nsupported.\nHCP v9.1\nHCP-43818\nCertain third-party tools and SDK solutions that\nconnect to HCP through HTTPS may not support TLS\nv1.3. With the release of HCP 9.4, for example, one\nsuch tool was found to be the AWS Command Line\nInterface (AWS CLI). Similarly, HCP Anywhere 4.5.4\ndoes not yet support TLS 1.3. Therefore, setting HCP\nto TLS 1.3 minimum stops HCP-AW communications\nuntil HCP is changed back to use TLS 1.2 as\nmaximum TLS level. A future release of HCP\nAnywhere is expected to add support for TLS 1.3;\nplease refer to the appropriate release notes of HCP\nAnywhere for further information. Before turning on\nTLS 1.3 in HCP, make sure that the tools and SDKs\nused to connect to HCP through HTTPS connection\ndo support TLS v1.3.\nHCP v9.4\nHCP-45026\nThe version Id tag is missing from the results when\ntrying to list all objects and their versions on a\nnamespace where versioning is not enabled.\nKnown issues\nThe next table lists the known issues in the current release of HCP. The issues are listed in\norder by reference number. Where applicable, the service request number is also shown.\nReference\nNumber\nSR Number\nDescription\nHCP-45870\n04048623\nAfter performing an add new nodes procedure in a\ncluster with VLANs configured for replication, the\ncluster might enter a read-only state because the\nHCP software stack fails to start on the newly added\nnodes.\nKnown issues\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n22"
+        },
+        {
+            "type": "text",
+            "page": 23,
+            "content": "Reference\nNumber\nSR Number\nDescription\nHCP-45680\n03964972,\n04105209\nThe MQE query can exhaust the memory resources\nof the Metadata Query Engine on an IPL2 cluster.\nHCP-45003\n\u2014\nWhen upgrading to HCP 9.4 version or later from\nprevious HCP versions that are configured with Active\nDirectory (AD), the sAMAccountName attribute value\nof the HCP computer account does not comply with\nMicrosoft requirements (that is, the attribute value is\nexpected to end with $ symbol at the end; however,\ncurrently it is present at the beginning of the attribute\nvalue). The sAMAccountName attribute value does\ncomply with Microsoft requirements on newly installed\nHCP 9.4 clusters. To comply with the Microsoft\nrequirement on upgraded clusters, customers need to\ndisconnect their HCP system from AD and then\nreconnect; this process will update the\nsAMAccountName attribute value to comply with the\nrequirement.\nHCP-44817\n\u2014\nThe HCP G11 node power supply might trigger a false\nalarm, indicating Power supply Power Supplies\nhas triggered an alarm; status: No\nredundancy.\nAs a possible workaround, an upgrade of the BMC\nfirmware supported by HCP G11 might resolve the\nissue.\nHCP-44325\n03644695\nReplication progress may slow down when an HCP\ncluster is unable to acquire an open file resource\nbecause the open file limit has been reached on the\ncluster.\nHCP-43908\n\u2014\nAfter a ZCF failover occurs in a SAN-attached HCP\ncluster, the System Management Console (SMC)\nHardware page is not accessible for approximately 5\nminutes. After that time, the page should become\navailable.\nHCP-43527\n03422907\nIf outbound traffic is blocked while incoming traffic\ncontinues to flow, a transmission time-out problem\ncan occur because the bonding driver\narp_validate setup does not detect half-broken\nlinks. This results in backend network communication\nproblems.\nHCP-43479\n03402060\nDuring log rotation, arc-rotate can stop (kill) JVM\nif log files to be rotated are open.\nKnown issues\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n23"
+        },
+        {
+            "type": "text",
+            "page": 24,
+            "content": "Reference\nNumber\nSR Number\nDescription\nHCP-43284\n\u2014\nIn some circumstances, an offline upgrade might fail\nbecause the HCP shutdown process cannot unmount\nan encrypted archive volume. If this failure occurs,\nconsult Hitachi VantaraSupport.\nAn offline upgrade failure adds the following two lines\nto the HCP logs:\n Standard ERROR for 'dmsetup remove --force \narchive001-crypt':\n   device-mapper: remove ioctl on archive001-\ncrypt  failed: Device or resource busy\nHCP-43082\n03422540\nThe arc-deploy during finalize migration might fail\nhalfway if a node roll occurs at the same time.\nHCP-42673\n\u2014\nWhen a node recovery service procedure is\nperformed on a VM cluster with a dedicated database\nvolume, and volumes are preserved during\ninstallation, the service procedure does not use the\ndedicated database volume for database location.\nHCP-42516\n\u2014\nA corrupt Samba daemon configuration file and a\nfailed Active Directory join might cause the HCP\nsystem services to continuously restart with an\nNT_STATUS_NO_MEMORY error.\nHCP-41176\n03131048,\n03141801,\n03171024\nHCP running on a G11 server can raise a false-\npositive alert about the power supply, CPU, or disk\ndrives.\nHCP-40505\n\u2014\nManually started execution of a service is not\npersistent. It can be interrupted by the scheduled\nservice or a node event such as a reboot.\nHCP-39876\n02673882\nIn a SAN-attached HCP environment, storage\naddition procedure may fail, indicating that the\nprocedure fails because of a device mapper name of\nmpathb (or other mpath device) cannot be formatted.\nHCP-39798\n02639142\nSolr does not create proper indexing when user\ningests a custom metadata containing format other\nthan \"Pretty formatted XML.\" Therefore, annotations\nwith a single line of XML are not parsed properly\nwhen doing phrase searches.\nKnown issues\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n24"
+        },
+        {
+            "type": "text",
+            "page": 25,
+            "content": "Reference\nNumber\nSR Number\nDescription\nHCP-39465\n\u2014\nObjects cannot be deleted using the namespace\nbrowser when logged in as an anonymous user. Log\nin as an authenticated user to delete objects when\nusing the namespace browser.\nHCP-38408\n02155007\nntpd tries to bind to usb0 network interface on HCP\n9.x G11 system and causes time synchronization\nissues.\nWorkaround: On each node, prevent the driver from\nloading by denylisting in /etc/modprobe.d/aos.conf\n(that is, add/append the following lines in /etc/\nmodprobe.d/aos.conf:\nblacklist cdc_ether\nblacklist usbnet\nHCP-38155\n02090989\nResetting advanced settings for an HCP S Series\nstorage component does not work.\nHCP-38048\n\u2014\nService clearPolicyState does not clear rows that\nhave no matching external_file entries.\nHCP-37851\n\u2014\nStarting with release HCP 8.2, all units of systemd-\ntmpfiles service log errors messages in /var/log/\nmessages on a daily periodicity. The error log\nmessages are similar to the following:\nsystemd-tmpfiles[29354]: [/usr/lib/tmpfiles.d/\nmdadm.conf:1] Line references path below legacy\ndirectory /var/run/, updating /var/run/mdadm \u2192 /run/\nmdadm; please update the tmpfiles.d/ drop-in file\naccordingly.\nInitial investigation suggests that these error\nmessages cause no functional error symptoms in\nHCP.\nHCP-37810\n\u2014\nWhen provisioning rear-cage SSD to the HCP cluster\non a subset of nodes in a SAN-attached G10 or G11\nconfiguration, the service procedure tries to add rear-\ncage SSD on both nodes that comprise a Zero-Copy-\nFailover (ZCF) pair, even if one of those nodes does\nnot have rear-cage SSD to be provisioned. This leads\nto error in the service procedure. As a work-around,\nensure that you provision rear-cage SSDs either for\nboth nodes that comprise a ZCF pair, or\nsimultaneously for all nodes in the cluster.\nKnown issues\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n25"
+        },
+        {
+            "type": "text",
+            "page": 26,
+            "content": "Reference\nNumber\nSR Number\nDescription\nHCP-37778\n\u2014\nAfter upgrade of an HCP system is completed, the\nSystem Management Console Hardware page may\ndisplay Initializing status for some of the logical\nvolumes. This is the result of the device SMART error\nlog containing records of error. Please contact Hitachi\nVantara technical support to identify the error\ncondition and the corrective action to resolve the\nsymptom.\nHCP-37754\n\u2014\nHCP installed in an ESXi environment may display\nthe following FSTRIM error message on the System\nManagement Console: Failure encountered\nattempting to trim volumes on nodes:, and\nan error with Event ID 2818 is listed in the error log\nunder Major Events.\nPlease contact Hitachi Vantara customer support if\nyou encounter this error message.\nHCP-37753\n\u2014\nHCP system goes in read-only state because of node\nrolls due to metadata manager not starting up. The\nsystem might even appear to be unstable..\nWorkaround: Reboot the system.\nHCP-37696\n01612339\nMQE shard / solr core balancing doesn\u2019t function as\ndesired for IPL=2 and causes incomplete query\nresults.\nHCP-37426\n\u2014\nAttempting to perform DELETE and PUTCOPY\nsimultaneously on an object results in \"Non-\nreplicating Irreparable objects detected\" error\nmessage in SMC of HCP.\nHCP-37381\n\u2014\nAWS S3 protocol in race condition allowed both\ndirectory and file objects created with same\npathname. Unlike AWS, HCP has a concept of\ndirectories. So the upper level directory cannot be\nalso a file.\nHCP-37342\n\u2014\nAn unexpected duplicate row in the per-object\nmetadata table will cause node outages until the\nduplicate row is removed.\nHCP-37335\n02509892\nHCP product installation procedure may fail with the\nfollowing error message if there is a USB drive or\nexternal DVD drive connected to the system when\nrunning the installation wizard:\numount: /dev/sr0: umount failed: Invalid argument.\nKnown issues\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n26"
+        },
+        {
+            "type": "text",
+            "page": 27,
+            "content": "Reference\nNumber\nSR Number\nDescription\nThis may occur in both VM and appliance\nconfigurations. Please disconnect all unnecessary\nUSB drive and external DVD drives from the system,\nand retry the installation procedure,\nHCP-36798\n01709881\nSNMP returns the incorrect replication link name\nWorkaround: Use the HCP Management API to\nreturn the correct replication link name.\nHCP-36744\n\u2014\nIn rare circumstances, when HCP G11 operating\nsystem is installed on a node, the installation process\nmay hang during making filesystems. This has\ntypically been observed in SAN-attached\nconfigurations. This symptom occurs when HCP G11\ndetects that there appears to already be a filesystem\non the volume, and the filesystem creation command\nis waiting for user input, but the prompt output by that\ncommand is not displayed on the console. If you are\ncertain that the filesystem formatting procedure can\ncontinue (i.e., the volumes are mapped correctly, and\nall data on the volume can be destroyed), you can\ntype in yes and press Enter, which should allow the\nprocedure to continue.\nHCP-36632\n01547564\nMultipart upload fails in the\nFileOpenForWriteIndex.suspendAndSwap function\nand returns an Attempt to suspend and swap\na multipart upload file handle error.\nHCP-36001\n01410508\nNode recovery during an online upgrade procedure\ntargets a healthy node.\nHCP-35089\n01426836\nZero-copy failover failback might leave behind stall\nmount points.\nHCP-34982\n\u2014\nIn the HCP Search Console UI, the login ID changes\nto null and a subsequent search returns 500 Error:\nInternal server error.\nWhen you open the Tenant Management Console\nfrom the System Management Console, initiate a\nsearch by logging in to the Search Console with your\nsystem-level credentials, and either refresh the page\nor click the search button, the following events occur:\n\u25a0\nYou are returned to the login page.\n\u25a0\nThe login ID changes to null.\nKnown issues\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n27"
+        },
+        {
+            "type": "text",
+            "page": 28,
+            "content": "Reference\nNumber\nSR Number\nDescription\nIf you log in to the Search Console again with your\ntenant-level credentials and initiate a search, the\nquery returns the following error message:\n500 Error: Internal server error\nWorkaround:Set the Log users out if inactive for\nmore than value to be the same on the System\nManagement Console and Tenant Management\nConsole. You can configure this value on the SMC >\nSecurity > Console tab.\nHCP-34764\n01309564\nAfter disabling CIFS on an HCP namespace, the\nWindows client connection remains active, and\nobjects are written to the root (/) file system\nHCP-34516\n01312806,\n01310161\nOverflowed, thin-provisioned block storage might\ncause data loss.\nWorkaround: Do not over provision dynamic pools.\nHCP-34515\n01312806\nMajor capacity of the /var file system contains log\ndownloads.\nHCP-34388\n01224371\nWhen a zero-copy-failover partner node reboots after\na failover, the metadata query engine does not\nrecover.\nWorkaround: Edit the following files:\n\u25a0\nIn the /opt/arc/solr/solr/solr.xml file,\nadd the shards that are on the standby volumes.\n\u25a0\nIn the /opt/arc/solr/solr/cores file, create\nsymlinks that point to the shards on the standby\nvolumes.\nHCP-34207\n\u2014\nFaulty SSD drives can cause a failure when adding a\nnew SSD volume to HCP.\nHCP-34203\n\u2014\nCapacity calculations and UI display are inconsistent\nbetween HCP and HCP S Series Node.\nHCP-33980\n\u2014\nSome metadata headers are processed inconsistently\nbetween AWS S3 and HCP.\nHCP-33541\n\u2014\nActive/passive replication link schedule does not\nadjust for systems located in different time zones.\nKnown issues\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n28"
+        },
+        {
+            "type": "text",
+            "page": 29,
+            "content": "Reference\nNumber\nSR Number\nDescription\nHCP-32957\n\u2014\nMetadata query engine with sort option causes\nApache Solr Java Virtual Machine to run out of\nmemory.\nHCP-32848\n\u2014\nDelete old database procedure hangs.\nWhen administering namespaces with 100,000\nobjects or more, the Delete Old Database procedure\nis known to run indefinitely and display #, even\nthough the deletion has completed.\nHCP-32555\n00294339\nWatchdog timer causes premature soft lockup panic.\nHCP-32486\n\u2014\nThe Active Directory allowlist filter is removed when\nthe HCP System Management Console fails to\nupdate settings.\nHCP-32164\n\u2014\nUnable to change the name of an HCP S Series\ncomponent in the HCP System Management\nConsole.\nHCP-32018\n00533224\nMigration hangs and produces inconsistent status\ninformation.\nHCP-31529\n\u2014\nSystem restart fails after changing management\nnetwork configuration.\nThe HCP system should restart each time a change is\nmade to the management network configuration, but\nafter enabling the management network for the first\ntime the HCP system does not restart again from\nchanges made to management network configuration.\nHCP-31499\n\u2014\nInconsistent case sensitivity for Hitachi API for\nAmazon S3 multipart upload query parameters.\nCase sensitivity is inconsistent among the query\nparameters used with S3 compatible API requests\nrelated to multipart uploads. For example, the\nuploadId query parameter used in requests to upload\na part is not case sensitive, while the uploadId query\nparameter used in requests to list the parts of a\nmultipart upload or complete or abort a multipart\nupload is case sensitive.\nHCP-31488\n\u2014\nSystem restart due to unavailable node not receiving\nmanagement network IP address.\nKnown issues\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n29"
+        },
+        {
+            "type": "text",
+            "page": 30,
+            "content": "Reference\nNumber\nSR Number\nDescription\nIf a node is unavailable when the management\nnetwork is enabled, the node does not receive the\nmanagement network IP address. If any other change\nis made to the management network, the HCP\nsystem shuts down so the node can receive the\nmanagement network IP address.\nWorkaround: Only enable the management network\nwhen all nodes are available.\nHCP-31431\n\u2014\nLinks in a geo-protection replication topology can be\nadded to replication chain.\nGeo-protection replication chains are not supported. If\na system in the geo-replication topology becomes\nunavailable, the geo-protected systems outside of the\ntopology could experience data unavailability\nHCP-31112\n01124247\nObjects left in \"VALID, UNREPLICATABLE_OPEN\"\nstate and cannot be cleaned up by running garbage\ncollection.\nHCP-30958\n\u2014\nDNS failover fails due to domain name change in\nactive/passive replication link.\nIf a system is in an active/passive replication link and\nhas its domain name changed, the replica system\ndoes not receive the updated domain name which\ncauses DNS failover to fail.\nWorkaround: After you change the domain name for\nthe primary system, update any setting on the tenant\noverview page to replicate the new domain name.\nHCP-30058\n\u2014\nAWS S3 500 Internal Server Error due to double\nslash (//) in object name\nIf an object has a double slash (//) in its object name\nand the object is ingested using HS3, HCP returns a\nHTTP 500 internal server error.\nHCP-30018\nHDS04030240\nNamespace browser cannot load directory due to\nASCII characters in object name.\nThe namespace browser cannot display the contents\nof a directory that contains an object with any of the\nfollowing ASCII characters in its name: %00-%0F,\n%10-%1F, or %20.\nKnown issues\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n30"
+        },
+        {
+            "type": "text",
+            "page": 31,
+            "content": "Reference\nNumber\nSR Number\nDescription\nHCP-29645\nHDS03709359\nAD falsely report missing SPNs due to replication\ntopology with tenant or namespaces on custom\nnetwork.\nIn a replication topology where systems have full SSO\nsupport, HCP may incorrectly report missing SPN\nerrors for replicating tenants and namespaces that\nare using a custom network with a non-default\ndomain name.\nHCP-29301\nHDS03709359\nDatabase connections exhausted\nOn high-load HCP systems that are balancing\nmetadata, nodes can restart due to exceeding the\ndatabase connection limit.\nHCP-25602\n00496802\nWhile the Migration service is running, the migration\nstatus occasionally shows incorrect values.\nOccasionally while the Migration service is running,\nthe migration status values for the total number of\nbytes being migrated and the total number of objects\nbeing migrated are incorrect. This occurs regardless\nof how many bytes or objects are actually migrated.\nOnce the migration completes, the migration status\nvalues become accurate.\nAccessing product documentation\nProduct user documentation is available on the Hitachi Vantara Support Website: https://\nknowledge.hitachivantara.com/Documents. Check this site for the most current\ndocumentation, including important updates that may have been made after the release of\nthe product.\nGetting help\nThe Hitachi Vantara Support Website is the destination for technical support of products and\nsolutions sold by Hitachi Vantara. To contact technical support, log on to the Hitachi Vantara\nSupport Website for contact information: https://support.hitachivantara.com/en_us/contact-\nus.html.\nHitachi Vantara Community is a global online community for Hitachi Vantara customers,\npartners, independent software vendors, employees, and prospects. It is the destination to\nget answers, discover insights, and make connections. Join the conversation today! Go to\ncommunity.hitachivantara.com, register, and complete your profile.\nAccessing product documentation\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n31"
+        },
+        {
+            "type": "text",
+            "page": 32,
+            "content": "Comments\nPlease send comments to doc.comments@hitachivantara.com. Include the document title\nand number, including the revision level (for example, -07), and refer to specific sections and\nparagraphs whenever possible. All comments become the property of Hitachi Vantara LLC.\nThank you!\nComments\nContent Platform 9.6.3 Release notes - Customer\nHitachi Content Platform Release Notes\n32"
+        },
+        {
+            "type": "text",
+            "page": 33,
+            "content": "Hitachi Vantara\nCorporate Headquarters\n2535 Augustine Drive\nSanta Clara, CA 95054 USA\nHitachiVantara.com/contact"
+        }
+    ],
+    "flattened_tables": [
+        {
+            "type": "table_fact",
+            "page": 7,
+            "content": "Hardware - Support limit: 80"
+        },
+        {
+            "type": "table_fact",
+            "page": 7,
+            "content": "Hardware - Support limit: 80"
+        },
+        {
+            "type": "table_fact",
+            "page": 7,
+            "content": "Hardware - Support limit: 8"
+        },
+        {
+            "type": "table_fact",
+            "page": 7,
+            "content": "Logical volume - Support limit: 63"
+        },
+        {
+            "type": "table_fact",
+            "page": 7,
+            "content": "Logical volume - Support limit: 15.999 TB"
+        },
+        {
+            "type": "table_fact",
+            "page": 7,
+            "content": "Internal storage - Support limit: 4"
+        },
+        {
+            "type": "table_fact",
+            "page": 7,
+            "content": "Internal storage - Support limit: HDD capacity\ndependent"
+        },
+        {
+            "type": "table_fact",
+            "page": 8,
+            "content": "Internal storage - Support limit: 12 (front-cage only)"
+        },
+        {
+            "type": "table_fact",
+            "page": 8,
+            "content": "Internal storage - Support limit: SSD capacity\ndependent"
+        },
+        {
+            "type": "table_fact",
+            "page": 8,
+            "content": "Internal storage - Support limit: 63"
+        },
+        {
+            "type": "table_fact",
+            "page": 8,
+            "content": "Internal storage - Support limit: 15.999 TB"
+        },
+        {
+            "type": "table_fact",
+            "page": 8,
+            "content": "HCP VM systems \u2014 VMware ESXi - Support limit: 1 OS LUN, 59 Data LUNs"
+        },
+        {
+            "type": "table_fact",
+            "page": 8,
+            "content": "HCP VM systems \u2014 VMware ESXi - Support limit: 15.999 TB"
+        },
+        {
+            "type": "table_fact",
+            "page": 8,
+            "content": "HCP VM systems \u2014 KVM - Support limit: 1 OS LUN\nData LUNs: Limited by the number of device\nslots available for LUNs in the VirtIO-blk\npara-virtualized storage back-end, which\ndepends on the number of other devices\nconfigured for the guest OS that also use\nthe VirtIO-blk back-end. In a typical HCP\nconfiguration, 17 slots are available."
+        },
+        {
+            "type": "table_fact",
+            "page": 8,
+            "content": "HCP VM systems \u2014 KVM - Support limit: 15.999 TB OS LUN"
+        },
+        {
+            "type": "table_fact",
+            "page": 8,
+            "content": "Data storage - Support limit: 1"
+        },
+        {
+            "type": "table_fact",
+            "page": 8,
+            "content": "Data storage - Support limit: 6 (5+1) sites"
+        },
+        {
+            "type": "table_fact",
+            "page": 8,
+            "content": "Data storage - Support limit: 3 (2+1) sites"
+        },
+        {
+            "type": "table_fact",
+            "page": 9,
+            "content": "Data storage - Support limit: 5"
+        },
+        {
+            "type": "table_fact",
+            "page": 9,
+            "content": "Data storage - Support limit: Standard non-SSD disks for\nindexes: 800,000,000\nSSD for indexes: 1,250,000,000"
+        },
+        {
+            "type": "table_fact",
+            "page": 9,
+            "content": "Data storage - Support limit: 64,000,000,000 (80 nodes times\n800,000,000 objects per node)\nIf using 1.9 TB SSD drives:\n100,000,000,000 (80 nodes times\n1,250,000,000 objects per node)"
+        },
+        {
+            "type": "table_fact",
+            "page": 9,
+            "content": "Data storage - Support limit: 1,500,000"
+        },
+        {
+            "type": "table_fact",
+            "page": 9,
+            "content": "Data storage - Support limit: 15,000,000"
+        },
+        {
+            "type": "table_fact",
+            "page": 9,
+            "content": "Data storage - Support limit: By namespace type:\n\u25a0 HCP namespaces with\nunbalanced directory setting: no\nrestriction\n\u25a0 HCP namespaces with balanced\ndirectory setting: 30,000,000"
+        },
+        {
+            "type": "table_fact",
+            "page": 9,
+            "content": "Data storage - Support limit: \u25a0 HTTP: About 2 TB\n(2,194,719,883,008 bytes)\n\u25a0 Hitachi API for Amazon S3:\n\u25cf Without multipart upload:\nAbout 2 TB\n(2,194,719,883,008 bytes)\n\u25cf With multipart upload: 5 TB\n\u25a0 WebDAV: About 2 TB\n(2,194,719,883,008 bytes)\n\u25a0 CIFS: 100 GB\n\u25a0 NFS: 100 GB"
+        },
+        {
+            "type": "table_fact",
+            "page": 9,
+            "content": "Data storage - Support limit: 8"
+        },
+        {
+            "type": "table_fact",
+            "page": 9,
+            "content": "Data storage - Support limit: 1 MB"
+        },
+        {
+            "type": "table_fact",
+            "page": 9,
+            "content": "Data storage - Support limit: 5 GB"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "Data storage - Support limit: 10,000"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "Data storage - Support limit: 20 inbound, 5 outbound"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "Data storage - Support limit: 1,000"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "Data storage - Support limit: 10,000"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "Data storage - Support limit: 50"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "User groups and accounts - Support limit: 10,000"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "User groups and accounts - Support limit: 100"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "User groups and accounts - Support limit: 10,000"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "User groups and accounts - Support limit: 100"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "User groups and accounts - Support limit: 1,000"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "User groups and accounts - Support limit: ~1200 (SPN limit in\nActive Directory)"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "Custom metadata - Support limit: 10"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "Custom metadata - Support limit: 1 MB"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "Custom metadata - Support limit: 1 GB"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "Custom metadata - Support limit: 1 GB"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "Custom metadata - Support limit: 10,000"
+        },
+        {
+            "type": "table_fact",
+            "page": 10,
+            "content": "Custom metadata - Support limit: 100"
+        },
+        {
+            "type": "table_fact",
+            "page": 11,
+            "content": "Custom metadata - Support limit: 32"
+        },
+        {
+            "type": "table_fact",
+            "page": 11,
+            "content": "Custom metadata - Support limit: 1,000,000 B"
+        },
+        {
+            "type": "table_fact",
+            "page": 11,
+            "content": "Custom metadata - Support limit: 2 KB"
+        },
+        {
+            "type": "table_fact",
+            "page": 11,
+            "content": "Custom metadata - Support limit: ~1200 (SPN limit in\nActive Directory)"
+        },
+        {
+            "type": "table_fact",
+            "page": 11,
+            "content": "Access control lists - Support limit: 1,000 MB"
+        },
+        {
+            "type": "table_fact",
+            "page": 11,
+            "content": "Metadata query engine - Support limit: 25"
+        },
+        {
+            "type": "table_fact",
+            "page": 11,
+            "content": "Metadata query engine - Support limit: 100"
+        },
+        {
+            "type": "table_fact",
+            "page": 11,
+            "content": "Metadata query engine - Support limit: 5"
+        },
+        {
+            "type": "table_fact",
+            "page": 11,
+            "content": "Network - Support limit: 200"
+        },
+        {
+            "type": "table_fact",
+            "page": 11,
+            "content": "Network - Support limit: 32"
+        },
+        {
+            "type": "table_fact",
+            "page": 11,
+            "content": "Network - Support limit: 10"
+        },
+        {
+            "type": "table_fact",
+            "page": 11,
+            "content": "Storage tiering - Support limit: 100"
+        },
+        {
+            "type": "table_fact",
+            "page": 11,
+            "content": "Storage tiering - Support limit: 100"
+        },
+        {
+            "type": "table_fact",
+            "page": 12,
+            "content": "Storage tiering - Support limit: 5"
+        },
+        {
+            "type": "table_fact",
+            "page": 12,
+            "content": "Miscellaneous - Support limit: 255"
+        },
+        {
+            "type": "table_fact",
+            "page": 12,
+            "content": "Miscellaneous - Support limit: 100"
+        },
+        {
+            "type": "table_fact",
+            "page": 12,
+            "content": "Miscellaneous - Support limit: 50"
+        },
+        {
+            "type": "table_fact",
+            "page": 12,
+            "content": "Miscellaneous - Support limit: 500 MB"
+        },
+        {
+            "type": "table_fact",
+            "page": 12,
+            "content": "Miscellaneous - Support limit: 1,000"
+        },
+        {
+            "type": "table_fact",
+            "page": 12,
+            "content": "Miscellaneous - Support limit: 100"
+        },
+        {
+            "type": "table_fact",
+            "page": 12,
+            "content": "Browser - Client Operating System: Windows"
+        },
+        {
+            "type": "table_fact",
+            "page": 12,
+            "content": "Browser - Client Operating System: Windows\nHP-UX\nIBM AIX\nRed Hat Enterprise Linux\nSun Solaris"
+        },
+        {
+            "type": "table_fact",
+            "page": 13,
+            "content": "Browser - Client Operating System: Windows\nHP-UX\nIBM AIX\nRed Hat Enterprise Linux\nSun Solaris"
+        },
+        {
+            "type": "table_fact",
+            "page": 13,
+            "content": "Browser - Client Operating System: N/A"
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - SR Number: 04189673,\n04341593"
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - Description: Resolved an issue related to management port\nconfiguration where the configuration information was not\ncleaned up after the management port is disabled. This bug\nalso caused issues with new VLAN creation."
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - SR Number: 04176117,\n03964645,\n03398188"
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - Description: Resolved an issue where domain/DNS aliases were not\nupdated after renaming a cluster, which caused DNS\nfailover to stop working as expected."
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - Description: Resolved an issue where HCP was not returning a valid\nversionId element for listObjectVersions requests\non versioning-disabled buckets."
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - Description: Resolved an issue where encrypt Cloud Pools options\ndisappear and show only encryption with local key\nmanagement option while updating the service plan name."
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - Description: Resolved an issue where incorrect message content was\nadded to the replication logs related to replication linkId."
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - Description: Resolved an issue that caused the deletion of empty parent\ndirectories to time out."
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - SR Number: 03210417,\n03226903"
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - Description: Resolved a log spam issue related to retry logic logging\nimmediately on undetermined write results, which caused\nbloating of the JVM logs."
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - Description: Removed spring-test v3.0.7 jar from HCP because there\nwere multiple security vulnerabilities reported with the\nSpring v3.0.7 framework."
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - Description: Resolved an issue where putObject and uploadPart\nrequests were failing against HCP when the supplied\nrequests used Transfer-Encoding: chunked and an\nincorrectly calculated content-length header at the same\ntime."
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 18,
+            "content": "Reference\nNumber - Description: Resolved an issue where disk cache is left Enabled on\nupgrades from releases prior to HCP 9.6."
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - SR Number: 04262089,\n03117669"
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - Description: Resolved an issue where the replication finishRecovery\nprocess on an A/P replication link experienced a long delay\nbefore completion."
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - SR Number: 03020014,\n02989847,\n03020014"
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - Description: Resolved an issue where arc-deploy could not\nunmount /tmp/upgrade_root/run when an upgrade restarted\nafter a failed attempt."
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - SR Number: 02903116"
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - Description: Resolved a security vulnerability where HCP responded to\nan HTTP OPTIONS request on port 443 to which it was not\nsupposed to respond."
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - SR Number: 02852874,\n02142039,\n04270639/0\n4226729"
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - Description: Resolved an issue where the SMC reported an error on\nmissing Management network IP addresses for nodes that\nwere retired."
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - SR Number: 00749017"
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - Description: Resolved an issue where the A/P replication link schedule\ndid not adjust for systems located in different time zones."
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - SR Number: 04176117"
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - Description: Resolved an issue where DNS failover stopped working\nafter the clusters involved in the replication set up were\nrenamed."
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - SR Number: 04140600"
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - Description: Resolved an issue involving multi-part objects (MPO) in\nreplication environment, which caused replication lag due to\nMissingMPOMarkerException."
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - Description: Resolved an issue where Cluster_ssh.py output\ncollected excessive length of output that impacted support\nusers."
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - Description: Disabled the bash session timeout, which caused ssh\nsessions to terminate after 15 minutes, resulting in usability\nimpact."
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - SR Number: 04371415"
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - Description: Resolved an issue where using the namespace user\ninterface (UI) to create folders and subfolders that have a\nspace in the their names caused duplicate folder names to\nappear in the UI with percent-encoded characters."
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - SR Number: 04345095"
+        },
+        {
+            "type": "table_fact",
+            "page": 19,
+            "content": "Reference\nNumber - Description: Resolved an upgrade issue where, online upgrade to v9.6\nor later failed in specific rare circumstances of Active\nDirectory settings after the first upgraded node started using\na newer messaging type."
+        },
+        {
+            "type": "table_fact",
+            "page": 20,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 20,
+            "content": "Reference\nNumber - Description: Resolved an installation issue on G10 systems with rear\ncage SSDs."
+        },
+        {
+            "type": "table_fact",
+            "page": 20,
+            "content": "Reference\nNumber - SR Number: 03753667,\n04301585,\n04339063,\n04343774,\n04404666\n04426996"
+        },
+        {
+            "type": "table_fact",
+            "page": 20,
+            "content": "Reference\nNumber - Description: Resolved an S Node retirement issue, where S Node\nretirement got stuck, with negative file size usage being\nreported in the SMC."
+        },
+        {
+            "type": "table_fact",
+            "page": 20,
+            "content": "Reference\nNumber - SR Number: 04336433"
+        },
+        {
+            "type": "table_fact",
+            "page": 20,
+            "content": "Reference\nNumber - Description: Resolved an issue where node status API could not return\nthe correct response code when a cluster was in read-only\nmode and Metadata manager either was not running or was\nspinning trying to create a new map."
+        },
+        {
+            "type": "table_fact",
+            "page": 20,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 20,
+            "content": "Reference\nNumber - Description: Audit daemon (auditd.service) will be disabled on new HCP\ninstallations and upgrades to HCP v9.6.3."
+        },
+        {
+            "type": "table_fact",
+            "page": 21,
+            "content": "CVE Record Number - Hitachi Vantara\nreference number: HCP-47097"
+        },
+        {
+            "type": "table_fact",
+            "page": 21,
+            "content": "CVE Record Number - Description: The PKCS#11 feature in ssh-agent\nin OpenSSH prior to 9.3p2 has an\ninsufficiently trustworthy search\npath, leading to remote code\nexecution if an agent is forwarded\nto an attacker-controlled system."
+        },
+        {
+            "type": "table_fact",
+            "page": 21,
+            "content": "CVE Record Number - Hitachi Vantara\nreference number: HCP-47144"
+        },
+        {
+            "type": "table_fact",
+            "page": 21,
+            "content": "CVE Record Number - Description: An attacker can manipulate file-\nupload parameters to enable paths\ntraversal. Under some\ncircumstances, this can lead to\nuploading a malicious file that can\nbe used to perform Remote Code\nExecution."
+        },
+        {
+            "type": "table_fact",
+            "page": 21,
+            "content": "CVE Record Number - Hitachi Vantara\nreference number: HCP-47115"
+        },
+        {
+            "type": "table_fact",
+            "page": 21,
+            "content": "CVE Record Number - Description: Resolved a security vulnerability\nwhere HCP responded to HTTP\nOPTIONS request on port 443,\nwhen it is not supposed to respond."
+        },
+        {
+            "type": "table_fact",
+            "page": 21,
+            "content": "Ref. number - Description: In HCP v8.2, the HCP software was upgraded to Jetty\nv9. The upgrade introduces several security\nenhancements that might impact some deployments:\n\u25a0 HCP no longer supports SSL v1, v2, and v3\nprotocols.\n\u25a0 HCP conforms more closely to RFC 7230, and no\nlonger allows header folding."
+        },
+        {
+            "type": "table_fact",
+            "page": 21,
+            "content": "Ref. number - Version\nintroduced in: HCP v8.2"
+        },
+        {
+            "type": "table_fact",
+            "page": 21,
+            "content": "Ref. number - Description: HCP now requires that the x-amz-date header value\nis within 15 minutes of when HCP receives the Hitachi\nAPI for Amazon S3 request."
+        },
+        {
+            "type": "table_fact",
+            "page": 21,
+            "content": "Ref. number - Version\nintroduced in: HCP v8.2"
+        },
+        {
+            "type": "table_fact",
+            "page": 21,
+            "content": "Ref. number - Description: HCP now validates x-amz-date headers on\nappropriate Hitachi API for Amazon S3 requests."
+        },
+        {
+            "type": "table_fact",
+            "page": 21,
+            "content": "Ref. number - Version\nintroduced in: HCP v8.2"
+        },
+        {
+            "type": "table_fact",
+            "page": 22,
+            "content": "Ref. number - Description: HCP now sends the severity of the EventID/\nmessages such as NOTICE, WARNING or ERROR to\nSyslog servers."
+        },
+        {
+            "type": "table_fact",
+            "page": 22,
+            "content": "Ref. number - Version\nintroduced in: HCP v8.1"
+        },
+        {
+            "type": "table_fact",
+            "page": 22,
+            "content": "Ref. number - Description: Use case of a namespace, with SMTP enabled\ndirectly writing to HCP S Series Node, is no longer\nsupported."
+        },
+        {
+            "type": "table_fact",
+            "page": 22,
+            "content": "Ref. number - Version\nintroduced in: HCP v8.2"
+        },
+        {
+            "type": "table_fact",
+            "page": 22,
+            "content": "Ref. number - Description: Use case of a namespace, with SMTP enabled\ndirectly writing to HCP S Series Node, is no longer\nsupported."
+        },
+        {
+            "type": "table_fact",
+            "page": 22,
+            "content": "Ref. number - Version\nintroduced in: HCP v9.1"
+        },
+        {
+            "type": "table_fact",
+            "page": 22,
+            "content": "Ref. number - Description: Certain third-party tools and SDK solutions that\nconnect to HCP through HTTPS may not support TLS\nv1.3. With the release of HCP 9.4, for example, one\nsuch tool was found to be the AWS Command Line\nInterface (AWS CLI). Similarly, HCP Anywhere 4.5.4\ndoes not yet support TLS 1.3. Therefore, setting HCP\nto TLS 1.3 minimum stops HCP-AW communications\nuntil HCP is changed back to use TLS 1.2 as\nmaximum TLS level. A future release of HCP\nAnywhere is expected to add support for TLS 1.3;\nplease refer to the appropriate release notes of HCP\nAnywhere for further information. Before turning on\nTLS 1.3 in HCP, make sure that the tools and SDKs\nused to connect to HCP through HTTPS connection\ndo support TLS v1.3."
+        },
+        {
+            "type": "table_fact",
+            "page": 22,
+            "content": "Ref. number - Version\nintroduced in: HCP v9.4"
+        },
+        {
+            "type": "table_fact",
+            "page": 22,
+            "content": "Ref. number - Description: The version Id tag is missing from the results when\ntrying to list all objects and their versions on a\nnamespace where versioning is not enabled."
+        },
+        {
+            "type": "table_fact",
+            "page": 22,
+            "content": "Ref. number - Version\nintroduced in: N/A"
+        },
+        {
+            "type": "table_fact",
+            "page": 22,
+            "content": "Reference\nNumber - SR Number: 04048623"
+        },
+        {
+            "type": "table_fact",
+            "page": 22,
+            "content": "Reference\nNumber - Description: After performing an add new nodes procedure in a\ncluster with VLANs configured for replication, the\ncluster might enter a read-only state because the\nHCP software stack fails to start on the newly added\nnodes."
+        },
+        {
+            "type": "table_fact",
+            "page": 23,
+            "content": "Reference\nNumber - SR Number: 03964972,\n04105209"
+        },
+        {
+            "type": "table_fact",
+            "page": 23,
+            "content": "Reference\nNumber - Description: The MQE query can exhaust the memory resources\nof the Metadata Query Engine on an IPL2 cluster."
+        },
+        {
+            "type": "table_fact",
+            "page": 23,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 23,
+            "content": "Reference\nNumber - Description: When upgrading to HCP 9.4 version or later from\nprevious HCP versions that are configured with Active\nDirectory (AD), the sAMAccountName attribute value\nof the HCP computer account does not comply with\nMicrosoft requirements (that is, the attribute value is\nexpected to end with $ symbol at the end; however,\ncurrently it is present at the beginning of the attribute\nvalue). The sAMAccountName attribute value does\ncomply with Microsoft requirements on newly installed\nHCP 9.4 clusters. To comply with the Microsoft\nrequirement on upgraded clusters, customers need to\ndisconnect their HCP system from AD and then\nreconnect; this process will update the\nsAMAccountName attribute value to comply with the\nrequirement."
+        },
+        {
+            "type": "table_fact",
+            "page": 23,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 23,
+            "content": "Reference\nNumber - Description: The HCP G11 node power supply might trigger a false\nalarm, indicating Power supply Power Supplies\nhas triggered an alarm; status: No\nredundancy.\nAs a possible workaround, an upgrade of the BMC\nfirmware supported by HCP G11 might resolve the\nissue."
+        },
+        {
+            "type": "table_fact",
+            "page": 23,
+            "content": "Reference\nNumber - SR Number: 03644695"
+        },
+        {
+            "type": "table_fact",
+            "page": 23,
+            "content": "Reference\nNumber - Description: Replication progress may slow down when an HCP\ncluster is unable to acquire an open file resource\nbecause the open file limit has been reached on the\ncluster."
+        },
+        {
+            "type": "table_fact",
+            "page": 23,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 23,
+            "content": "Reference\nNumber - Description: After a ZCF failover occurs in a SAN-attached HCP\ncluster, the System Management Console (SMC)\nHardware page is not accessible for approximately 5\nminutes. After that time, the page should become\navailable."
+        },
+        {
+            "type": "table_fact",
+            "page": 23,
+            "content": "Reference\nNumber - SR Number: 03422907"
+        },
+        {
+            "type": "table_fact",
+            "page": 23,
+            "content": "Reference\nNumber - Description: If outbound traffic is blocked while incoming traffic\ncontinues to flow, a transmission time-out problem\ncan occur because the bonding driver\narp_validate setup does not detect half-broken\nlinks. This results in backend network communication\nproblems."
+        },
+        {
+            "type": "table_fact",
+            "page": 23,
+            "content": "Reference\nNumber - SR Number: 03402060"
+        },
+        {
+            "type": "table_fact",
+            "page": 23,
+            "content": "Reference\nNumber - Description: During log rotation, arc-rotate can stop (kill) JVM\nif log files to be rotated are open."
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - Description: In some circumstances, an offline upgrade might fail\nbecause the HCP shutdown process cannot unmount\nan encrypted archive volume. If this failure occurs,\nconsult Hitachi VantaraSupport.\nAn offline upgrade failure adds the following two lines\nto the HCP logs:"
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - SR Number: N/A"
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - Description: Standard ERROR for 'dmsetup remove --force\narchive001-crypt':\ndevice-mapper: remove ioctl on archive001-\ncrypt failed: Device or resource busy"
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - SR Number: N/A"
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - Description: N/A"
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - SR Number: 03422540"
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - Description: The arc-deploy during finalize migration might fail\nhalfway if a node roll occurs at the same time."
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - Description: When a node recovery service procedure is\nperformed on a VM cluster with a dedicated database\nvolume, and volumes are preserved during\ninstallation, the service procedure does not use the\ndedicated database volume for database location."
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - Description: A corrupt Samba daemon configuration file and a\nfailed Active Directory join might cause the HCP\nsystem services to continuously restart with an\nNT_STATUS_NO_MEMORY error."
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - SR Number: 03131048,\n03141801,\n03171024"
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - Description: HCP running on a G11 server can raise a false-\npositive alert about the power supply, CPU, or disk\ndrives."
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - Description: Manually started execution of a service is not\npersistent. It can be interrupted by the scheduled\nservice or a node event such as a reboot."
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - SR Number: 02673882"
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - Description: In a SAN-attached HCP environment, storage\naddition procedure may fail, indicating that the\nprocedure fails because of a device mapper name of\nmpathb (or other mpath device) cannot be formatted."
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - SR Number: 02639142"
+        },
+        {
+            "type": "table_fact",
+            "page": 24,
+            "content": "Reference\nNumber - Description: Solr does not create proper indexing when user\ningests a custom metadata containing format other\nthan \"Pretty formatted XML.\" Therefore, annotations\nwith a single line of XML are not parsed properly\nwhen doing phrase searches."
+        },
+        {
+            "type": "table_fact",
+            "page": 25,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 25,
+            "content": "Reference\nNumber - Description: Objects cannot be deleted using the namespace\nbrowser when logged in as an anonymous user. Log\nin as an authenticated user to delete objects when\nusing the namespace browser."
+        },
+        {
+            "type": "table_fact",
+            "page": 25,
+            "content": "Reference\nNumber - SR Number: 02155007"
+        },
+        {
+            "type": "table_fact",
+            "page": 25,
+            "content": "Reference\nNumber - Description: ntpd tries to bind to usb0 network interface on HCP\n9.x G11 system and causes time synchronization\nissues.\nWorkaround: On each node, prevent the driver from\nloading by denylisting in /etc/modprobe.d/aos.conf\n(that is, add/append the following lines in /etc/\nmodprobe.d/aos.conf:"
+        },
+        {
+            "type": "table_fact",
+            "page": 25,
+            "content": "Reference\nNumber - SR Number: N/A"
+        },
+        {
+            "type": "table_fact",
+            "page": 25,
+            "content": "Reference\nNumber - Description: blacklist cdc_ether\nblacklist usbnet"
+        },
+        {
+            "type": "table_fact",
+            "page": 25,
+            "content": "Reference\nNumber - SR Number: N/A"
+        },
+        {
+            "type": "table_fact",
+            "page": 25,
+            "content": "Reference\nNumber - Description: N/A"
+        },
+        {
+            "type": "table_fact",
+            "page": 25,
+            "content": "Reference\nNumber - SR Number: 02090989"
+        },
+        {
+            "type": "table_fact",
+            "page": 25,
+            "content": "Reference\nNumber - Description: Resetting advanced settings for an HCP S Series\nstorage component does not work."
+        },
+        {
+            "type": "table_fact",
+            "page": 25,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 25,
+            "content": "Reference\nNumber - Description: Service clearPolicyState does not clear rows that\nhave no matching external_file entries."
+        },
+        {
+            "type": "table_fact",
+            "page": 25,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 25,
+            "content": "Reference\nNumber - Description: Starting with release HCP 8.2, all units of systemd-\ntmpfiles service log errors messages in /var/log/\nmessages on a daily periodicity. The error log\nmessages are similar to the following:\nsystemd-tmpfiles[29354]: [/usr/lib/tmpfiles.d/\nmdadm.conf:1] Line references path below legacy\ndirectory /var/run/, updating /var/run/mdadm \u2192 /run/\nmdadm; please update the tmpfiles.d/ drop-in file\naccordingly.\nInitial investigation suggests that these error\nmessages cause no functional error symptoms in\nHCP."
+        },
+        {
+            "type": "table_fact",
+            "page": 25,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 25,
+            "content": "Reference\nNumber - Description: When provisioning rear-cage SSD to the HCP cluster\non a subset of nodes in a SAN-attached G10 or G11\nconfiguration, the service procedure tries to add rear-\ncage SSD on both nodes that comprise a Zero-Copy-\nFailover (ZCF) pair, even if one of those nodes does\nnot have rear-cage SSD to be provisioned. This leads\nto error in the service procedure. As a work-around,\nensure that you provision rear-cage SSDs either for\nboth nodes that comprise a ZCF pair, or\nsimultaneously for all nodes in the cluster."
+        },
+        {
+            "type": "table_fact",
+            "page": 26,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 26,
+            "content": "Reference\nNumber - Description: After upgrade of an HCP system is completed, the\nSystem Management Console Hardware page may\ndisplay Initializing status for some of the logical\nvolumes. This is the result of the device SMART error\nlog containing records of error. Please contact Hitachi\nVantara technical support to identify the error\ncondition and the corrective action to resolve the\nsymptom."
+        },
+        {
+            "type": "table_fact",
+            "page": 26,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 26,
+            "content": "Reference\nNumber - Description: HCP installed in an ESXi environment may display\nthe following FSTRIM error message on the System\nManagement Console: Failure encountered\nattempting to trim volumes on nodes:, and\nan error with Event ID 2818 is listed in the error log\nunder Major Events.\nPlease contact Hitachi Vantara customer support if\nyou encounter this error message."
+        },
+        {
+            "type": "table_fact",
+            "page": 26,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 26,
+            "content": "Reference\nNumber - Description: HCP system goes in read-only state because of node\nrolls due to metadata manager not starting up. The\nsystem might even appear to be unstable..\nWorkaround: Reboot the system."
+        },
+        {
+            "type": "table_fact",
+            "page": 26,
+            "content": "Reference\nNumber - SR Number: 01612339"
+        },
+        {
+            "type": "table_fact",
+            "page": 26,
+            "content": "Reference\nNumber - Description: MQE shard / solr core balancing doesn\u2019t function as\ndesired for IPL=2 and causes incomplete query\nresults."
+        },
+        {
+            "type": "table_fact",
+            "page": 26,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 26,
+            "content": "Reference\nNumber - Description: Attempting to perform DELETE and PUTCOPY\nsimultaneously on an object results in \"Non-\nreplicating Irreparable objects detected\" error\nmessage in SMC of HCP."
+        },
+        {
+            "type": "table_fact",
+            "page": 26,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 26,
+            "content": "Reference\nNumber - Description: AWS S3 protocol in race condition allowed both\ndirectory and file objects created with same\npathname. Unlike AWS, HCP has a concept of\ndirectories. So the upper level directory cannot be\nalso a file."
+        },
+        {
+            "type": "table_fact",
+            "page": 26,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 26,
+            "content": "Reference\nNumber - Description: An unexpected duplicate row in the per-object\nmetadata table will cause node outages until the\nduplicate row is removed."
+        },
+        {
+            "type": "table_fact",
+            "page": 26,
+            "content": "Reference\nNumber - SR Number: 02509892"
+        },
+        {
+            "type": "table_fact",
+            "page": 26,
+            "content": "Reference\nNumber - Description: HCP product installation procedure may fail with the\nfollowing error message if there is a USB drive or\nexternal DVD drive connected to the system when\nrunning the installation wizard:\numount: /dev/sr0: umount failed: Invalid argument."
+        },
+        {
+            "type": "table_fact",
+            "page": 27,
+            "content": "Reference\nNumber - SR Number: N/A"
+        },
+        {
+            "type": "table_fact",
+            "page": 27,
+            "content": "Reference\nNumber - Description: This may occur in both VM and appliance\nconfigurations. Please disconnect all unnecessary\nUSB drive and external DVD drives from the system,\nand retry the installation procedure,"
+        },
+        {
+            "type": "table_fact",
+            "page": 27,
+            "content": "Reference\nNumber - SR Number: 01709881"
+        },
+        {
+            "type": "table_fact",
+            "page": 27,
+            "content": "Reference\nNumber - Description: SNMP returns the incorrect replication link name\nWorkaround: Use the HCP Management API to\nreturn the correct replication link name."
+        },
+        {
+            "type": "table_fact",
+            "page": 27,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 27,
+            "content": "Reference\nNumber - Description: In rare circumstances, when HCP G11 operating\nsystem is installed on a node, the installation process\nmay hang during making filesystems. This has\ntypically been observed in SAN-attached\nconfigurations. This symptom occurs when HCP G11\ndetects that there appears to already be a filesystem\non the volume, and the filesystem creation command\nis waiting for user input, but the prompt output by that\ncommand is not displayed on the console. If you are\ncertain that the filesystem formatting procedure can\ncontinue (i.e., the volumes are mapped correctly, and\nall data on the volume can be destroyed), you can\ntype in yes and press Enter, which should allow the\nprocedure to continue."
+        },
+        {
+            "type": "table_fact",
+            "page": 27,
+            "content": "Reference\nNumber - SR Number: 01547564"
+        },
+        {
+            "type": "table_fact",
+            "page": 27,
+            "content": "Reference\nNumber - Description: Multipart upload fails in the\nFileOpenForWriteIndex.suspendAndSwap function\nand returns an Attempt to suspend and swap\na multipart upload file handle error."
+        },
+        {
+            "type": "table_fact",
+            "page": 27,
+            "content": "Reference\nNumber - SR Number: 01410508"
+        },
+        {
+            "type": "table_fact",
+            "page": 27,
+            "content": "Reference\nNumber - Description: Node recovery during an online upgrade procedure\ntargets a healthy node."
+        },
+        {
+            "type": "table_fact",
+            "page": 27,
+            "content": "Reference\nNumber - SR Number: 01426836"
+        },
+        {
+            "type": "table_fact",
+            "page": 27,
+            "content": "Reference\nNumber - Description: Zero-copy failover failback might leave behind stall\nmount points."
+        },
+        {
+            "type": "table_fact",
+            "page": 27,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 27,
+            "content": "Reference\nNumber - Description: In the HCP Search Console UI, the login ID changes\nto null and a subsequent search returns 500 Error:\nInternal server error.\nWhen you open the Tenant Management Console\nfrom the System Management Console, initiate a\nsearch by logging in to the Search Console with your\nsystem-level credentials, and either refresh the page\nor click the search button, the following events occur:\n\u25a0 You are returned to the login page.\n\u25a0 The login ID changes to null."
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - SR Number: N/A"
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - Description: If you log in to the Search Console again with your\ntenant-level credentials and initiate a search, the\nquery returns the following error message:"
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - SR Number: N/A"
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - Description: 500 Error: Internal server error"
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - SR Number: N/A"
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - Description: Workaround:Set the Log users out if inactive for\nmore than value to be the same on the System\nManagement Console and Tenant Management\nConsole. You can configure this value on the SMC >\nSecurity > Console tab."
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - SR Number: 01309564"
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - Description: After disabling CIFS on an HCP namespace, the\nWindows client connection remains active, and\nobjects are written to the root (/) file system"
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - SR Number: 01312806,\n01310161"
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - Description: Overflowed, thin-provisioned block storage might\ncause data loss.\nWorkaround: Do not over provision dynamic pools."
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - SR Number: 01312806"
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - Description: Major capacity of the /var file system contains log\ndownloads."
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - SR Number: 01224371"
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - Description: When a zero-copy-failover partner node reboots after\na failover, the metadata query engine does not\nrecover.\nWorkaround: Edit the following files:\n\u25a0 In the /opt/arc/solr/solr/solr.xml file,\nadd the shards that are on the standby volumes.\n\u25a0 In the /opt/arc/solr/solr/cores file, create\nsymlinks that point to the shards on the standby\nvolumes."
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - Description: Faulty SSD drives can cause a failure when adding a\nnew SSD volume to HCP."
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - Description: Capacity calculations and UI display are inconsistent\nbetween HCP and HCP S Series Node."
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - Description: Some metadata headers are processed inconsistently\nbetween AWS S3 and HCP."
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 28,
+            "content": "Reference\nNumber - Description: Active/passive replication link schedule does not\nadjust for systems located in different time zones."
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - Description: Metadata query engine with sort option causes\nApache Solr Java Virtual Machine to run out of\nmemory."
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - Description: Delete old database procedure hangs.\nWhen administering namespaces with 100,000\nobjects or more, the Delete Old Database procedure\nis known to run indefinitely and display #, even\nthough the deletion has completed."
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - SR Number: 00294339"
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - Description: Watchdog timer causes premature soft lockup panic."
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - Description: The Active Directory allowlist filter is removed when\nthe HCP System Management Console fails to\nupdate settings."
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - Description: Unable to change the name of an HCP S Series\ncomponent in the HCP System Management\nConsole."
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - SR Number: 00533224"
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - Description: Migration hangs and produces inconsistent status\ninformation."
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - Description: System restart fails after changing management\nnetwork configuration.\nThe HCP system should restart each time a change is\nmade to the management network configuration, but\nafter enabling the management network for the first\ntime the HCP system does not restart again from\nchanges made to management network configuration."
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - Description: Inconsistent case sensitivity for Hitachi API for\nAmazon S3 multipart upload query parameters.\nCase sensitivity is inconsistent among the query\nparameters used with S3 compatible API requests\nrelated to multipart uploads. For example, the\nuploadId query parameter used in requests to upload\na part is not case sensitive, while the uploadId query\nparameter used in requests to list the parts of a\nmultipart upload or complete or abort a multipart\nupload is case sensitive."
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 29,
+            "content": "Reference\nNumber - Description: System restart due to unavailable node not receiving\nmanagement network IP address."
+        },
+        {
+            "type": "table_fact",
+            "page": 30,
+            "content": "Reference\nNumber - SR Number: N/A"
+        },
+        {
+            "type": "table_fact",
+            "page": 30,
+            "content": "Reference\nNumber - Description: If a node is unavailable when the management\nnetwork is enabled, the node does not receive the\nmanagement network IP address. If any other change\nis made to the management network, the HCP\nsystem shuts down so the node can receive the\nmanagement network IP address.\nWorkaround: Only enable the management network\nwhen all nodes are available."
+        },
+        {
+            "type": "table_fact",
+            "page": 30,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 30,
+            "content": "Reference\nNumber - Description: Links in a geo-protection replication topology can be\nadded to replication chain.\nGeo-protection replication chains are not supported. If\na system in the geo-replication topology becomes\nunavailable, the geo-protected systems outside of the\ntopology could experience data unavailability"
+        },
+        {
+            "type": "table_fact",
+            "page": 30,
+            "content": "Reference\nNumber - SR Number: 01124247"
+        },
+        {
+            "type": "table_fact",
+            "page": 30,
+            "content": "Reference\nNumber - Description: Objects left in \"VALID, UNREPLICATABLE_OPEN\"\nstate and cannot be cleaned up by running garbage\ncollection."
+        },
+        {
+            "type": "table_fact",
+            "page": 30,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 30,
+            "content": "Reference\nNumber - Description: DNS failover fails due to domain name change in\nactive/passive replication link.\nIf a system is in an active/passive replication link and\nhas its domain name changed, the replica system\ndoes not receive the updated domain name which\ncauses DNS failover to fail.\nWorkaround: After you change the domain name for\nthe primary system, update any setting on the tenant\noverview page to replicate the new domain name."
+        },
+        {
+            "type": "table_fact",
+            "page": 30,
+            "content": "Reference\nNumber - SR Number: \u2014"
+        },
+        {
+            "type": "table_fact",
+            "page": 30,
+            "content": "Reference\nNumber - Description: AWS S3 500 Internal Server Error due to double\nslash (//) in object name\nIf an object has a double slash (//) in its object name\nand the object is ingested using HS3, HCP returns a\nHTTP 500 internal server error."
+        },
+        {
+            "type": "table_fact",
+            "page": 30,
+            "content": "Reference\nNumber - SR Number: HDS04030240"
+        },
+        {
+            "type": "table_fact",
+            "page": 30,
+            "content": "Reference\nNumber - Description: Namespace browser cannot load directory due to\nASCII characters in object name.\nThe namespace browser cannot display the contents\nof a directory that contains an object with any of the\nfollowing ASCII characters in its name: %00-%0F,\n%10-%1F, or %20."
+        },
+        {
+            "type": "table_fact",
+            "page": 31,
+            "content": "Reference\nNumber - SR Number: HDS03709359"
+        },
+        {
+            "type": "table_fact",
+            "page": 31,
+            "content": "Reference\nNumber - Description: AD falsely report missing SPNs due to replication\ntopology with tenant or namespaces on custom\nnetwork.\nIn a replication topology where systems have full SSO\nsupport, HCP may incorrectly report missing SPN\nerrors for replicating tenants and namespaces that\nare using a custom network with a non-default\ndomain name."
+        },
+        {
+            "type": "table_fact",
+            "page": 31,
+            "content": "Reference\nNumber - SR Number: HDS03709359"
+        },
+        {
+            "type": "table_fact",
+            "page": 31,
+            "content": "Reference\nNumber - Description: Database connections exhausted\nOn high-load HCP systems that are balancing\nmetadata, nodes can restart due to exceeding the\ndatabase connection limit."
+        },
+        {
+            "type": "table_fact",
+            "page": 31,
+            "content": "Reference\nNumber - SR Number: 00496802"
+        },
+        {
+            "type": "table_fact",
+            "page": 31,
+            "content": "Reference\nNumber - Description: While the Migration service is running, the migration\nstatus occasionally shows incorrect values.\nOccasionally while the Migration service is running,\nthe migration status values for the total number of\nbytes being migrated and the total number of objects\nbeing migrated are incorrect. This occurs regardless\nof how many bytes or objects are actually migrated.\nOnce the migration completes, the migration status\nvalues become accurate."
+        }
+    ],
+    "ocr_blocks": [
+        {
+            "type": "ocr",
+            "page": 1,
+            "content": "ma ae a",
+            "image": "D:\\Abishek\\Capstone\\Extracted\\HCP_v9_6_3_Release_Notes\\Images\\page1_img1.png"
+        }
+    ],
+    "extracted_images": [
+        {
+            "page": 1,
+            "image_path": "D:\\Abishek\\Capstone\\Extracted\\HCP_v9_6_3_Release_Notes\\Images\\page1_img1.png"
+        },
+        {
+            "page": 6,
+            "image_path": "D:\\Abishek\\Capstone\\Extracted\\HCP_v9_6_3_Release_Notes\\Images\\page6_img1.png"
+        },
+        {
+            "page": 12,
+            "image_path": "D:\\Abishek\\Capstone\\Extracted\\HCP_v9_6_3_Release_Notes\\Images\\page12_img1.png"
+        },
+        {
+            "page": 13,
+            "image_path": "D:\\Abishek\\Capstone\\Extracted\\HCP_v9_6_3_Release_Notes\\Images\\page13_img1.png"
+        },
+        {
+            "page": 15,
+            "image_path": "D:\\Abishek\\Capstone\\Extracted\\HCP_v9_6_3_Release_Notes\\Images\\page15_img1.png"
+        }
+    ]
+}

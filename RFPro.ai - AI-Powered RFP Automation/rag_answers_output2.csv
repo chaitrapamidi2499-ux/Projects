@@ -1,0 +1,114 @@
+Question,Answer
+Provide a detailed description of the proposed solution.,Not enough information is available in the retrieved content.
+What are the scalability options for the proposed solution?,"The retrieved documents discuss several aspects of scalability:
+
+*   **Resource Allocation:** Doubling the RAM and CPU allocation for virtual Storage Nodes can provide similar resources to StorageGRID appliance nodes.
+*   **RAM Considerations:** If the amount of metadata per node exceeds 500 GB, consider increasing the RAM per node to 48 GB or more.
+*   **CPU Core Requirements:** Each StorageGRID node requires 8 CPU cores. If hyperthreading is enabled, you can provide 8 virtual cores (4 physical cores). Otherwise, you must provide 8 physical cores.
+*   **Load Balancing:** Using a load balancer maximizes speed and connection capacity across multiple Storage Nodes. The StorageGRID Load Balancer service is recommended, but external load balancers can also be used. The Load Balancer service routes more requests to Storage Nodes with higher CPU availability.
+*   **Network Bandwidth:** To avoid introducing a bottleneck, SAN bandwidth for a given host should roughly match the aggregate Storage Node network bandwidth for all Storage Nodes running on that host.
+
+These points indicate that the solution can scale by increasing resources per node (vertical scaling) and by distributing the workload across multiple nodes using load balancing (horizontal scaling).
+Not enough information is available in the retrieved content to provide a comprehensive scalability plan, maximum expected capacity, or specific technologies used for scalability."
+Scalability - min and max capacity and number of objects supported,Not enough information is available in the retrieved content.
+"No SPOF (Single Point of Failure) components – for software defined, how does your software report and manage failed components? Are there any SPOF in any piece of the architecture - hardware, software, or both? If no, please explain how this is accomplished.",Not enough information is available in the retrieved content.
+"Does the solution have automatic failure notification via email, text, and other methods?","The solution supports automated alerting via email and SNMP notifications. When an alert is triggered, ""An email notification is sent, assuming you have configured an SMTP server and provided email addresses for the recipients"" and ""An Simple Network Management Protocol (SNMP) notification is sent, assuming you have configured the StorageGRID SNMP agent."""
+"Can access to reporting features be segregated by users/roles? If so, please explain.",Not enough information is available in the retrieved content.
+"Does the solution have reporting related to system health? If so, please explain the reporting and the granularity. ","The solution offers health check reports. When you prepare health check reports, ""the HCP system runs a health diagnostic tool on the available nodes in the cluster"" using ""signatures to collect information about the health of the HCP nodes."" Signatures are classified into components such as ""replication, admin, or JVM"" and types (""info and issue""). ""Info signatures collect node configuration information such as memory configuration, HCP version, hot fixes, and other HCP configurations."" ""Issue signatures report if a node either is experiencing a certain issue or is at risk of experiencing an issue, such as server issues, object issues, repeated node restarts, or other general issues."" Performance metrics provide information about system events and can be used to monitor system status."
+"Product reporting - including chargeback for tenant capacity, performance usage and product health","Chargeback reports contain current and historical statistics about the tenant and its namespaces, broken out by hour. ""A chargeback report contains statistics for each namespace owned by the current tenant. It also contains aggregated namespace statistics for the tenant."" They enable you to adjust storage and bandwidth allocations based on usage patterns and serve as input to billing systems that need to determine charges for capacity and bandwidth usage."
+Describe all the security features of the proposed solution.,"Based on the provided documents, here's an overview of security features in StorageGrid and related contexts:
+
+**StorageGrid Security Features:**
+
+*   **Security Certificates Management**
+*   **Internal Firewall Controls:** Ability to control network access to each node by configuring its internal firewall, preventing access on all ports except those needed for deployment.
+*   **Key Management Servers (KMS):** Configuration of key management servers for the StorageGrid site and enabling node encryption for the appliance.
+*   **Security Settings Configuration:** Including TLS and SSH policy, network and object security options, and interface security settings.
+*   **Storage Proxy/Admin Proxy Configuration:** Configuring settings for a storage proxy or an admin proxy.
+*   **Encryption Methods:** StorageGrid provides several options for encrypting data.
+*   **Admin Node Access Control:** Control access to StorageGRID Admin Nodes by opening or closing specific ports at the external firewall.
+*   **Strong Passwords:** It is assumed that you use strong passwords for StorageGRID.
+*   **HTTPS:** It is assumed that you use HTTPS instead of HTTP.
+*   **Certificate-based Authentication:** Enable certificate-based authentication where available.
+
+**HCP Security Features:**
+
+*   **SSL for Management and Search Consoles:** Always uses SSL to secure the Management and Search Consoles.
+*   **SSL for HTTP and WebDAV Access:** HCP can use SSL to ensure the privacy of HTTP and WebDAV access to namespaces.
+*   **Node Login Prevention:** HCP does not allow system-console logins on its nodes.
+*   **WORM Storage:** After the data for an object is stored in the repository, HCP, by default, prevents that data from being modified or overwritten.
+
+**Network Security Settings (HCP):**
+
+*   **Enable/Disable Ping Responses**
+*   **Enable/Disable SSH Access**
+*   **Enable/Disable Node Status Exposure**
+*   **Allow/Disallow SSL Renegotiation**
+*   **Restrict Anonymous Access with CIFS**
+*   **Prevent Data Access with SMBv1**
+*   **Minimum Security Protocol (TLS version)**
+*   **Enable/Disable various IANA Cipher Names**
+*   **Enable 3DES Ciphers**"
+"Please specify how data at rest encryption is provided (e.g. underlying server/disk encryption, software-based server-side encryption, client provided Keys?)","The content discusses different encryption options for data at rest:
+
+1.  **S3 object server-side encryption with customer-provided keys (SSE-C):**
+    *   How it works: ""You issue an S3 request to store an object and include three request headers: x-amz-server-side-encryption-customer-algorithm, x-amz-server-side-encryption-customer-key, x-amz-server-side-encryption-customer- key-MD5""
+    *   Applies to: ""Newly ingested S3 object data only. Encryption must be specified for the object. Object metadata and other sensitive data aren’t encrypted. Keys are managed outside of StorageGRID.""
+2.  **External volume or datastore encryption:**
+    *   How it works: ""You use an encryption method outside of StorageGRID to encrypt an entire volume or datastore, if your deployment platform supports it.""
+    *   Applies to: ""All object data, metadata, and system configuration data, assuming every volume or datastore is encrypted. An external encryption method provides tighter control over encryption algorithms and keys. Can be combined with the other methods listed.""
+3.  **Object encryption outside of StorageGRID:**
+    *   How it works: ""You use an encryption method outside of StorageGRID to encrypt object data and metadata before they are ingested into StorageGRID.""
+    *   Applies to: ""Object data and metadata only (system configuration data is not encrypted). An external encryption method provides tighter control over encryption algorithms and keys. Can be combined with the other methods listed.""
+4.  **SSE (server-side encryption with StorageGRID-managed keys):** When you issue an S3 request to store an object, StorageGRID encrypts the object with a unique key. When you issue an S3 request to retrieve the object, StorageGRID uses the stored key to decrypt the object."
+Does the solution support FIPS 140-2 compliant AES 256-bit encryption? Is this compliance selectable or does it demand all or nothing?,"The solution supports ""FIPS 140-2 validated cryptography.""
+
+Configuration information:
+*   For appliance models containing SED or FIPS NVMe SSDs that you manage using the StorageGRID Appliance Installer and Grid Manager, enable and configure StorageGRID drive encryption.
+*   For appliances without SED, FDE, or FIPS drives, enable and configure StorageGRID software node encryption using a Key Management Server (KMS).
+
+Not enough information is available in the retrieved content to determine if FIPS 140-2 mode can be enabled/disabled on specific components or if it is an all-or-nothing configuration."
+Product performance capabilities - e.g.  read or written per minute. How many connections can the product sustain,"HCP has a limit of 255 concurrent connections from the pool that the S3 compatible API shares with the REST and WebDAV APIs, with another 20 queued. The maximum number of supported HTTP connections on an HCP node can exceed the http_connections_limit setting, and the queue size may not be limited, but it can grow."
+Availability and Reliability (Resilience),"The NetApp StorageGrid system is resilient to failures, and many recovery and maintenance procedures can be performed. However, if an entire StorageGRID site fails or if multiple Storage Nodes fail, technical support should be contacted to assess the situation, develop a recovery plan, and then recover the failed nodes or site. ""StorageGRID systems are resilient to a wide variety of failures, and you can successfully perform many recovery and maintenance procedures yourself."""
+Load balancing customer IO capabilities across nodes in a cluster or across geographic areas within a region,"Here's what the document says about load balancing customer I/O across nodes:
+
+*   When a client application saves or retrieves data from a StorageGRID system, StorageGRID uses a load balancer to manage the ingest and retrieval workload.
+*   Load balancing maximizes speed and connection capacity by distributing the workload across multiple Storage Nodes.
+*   The StorageGRID Load Balancer service is installed on all Admin Nodes and all Gateway Nodes and provides Layer 7 load balancing.
+*   The Load Balancer service on each node operates independently when forwarding client traffic to the Storage Nodes.
+*   Through a weighting process, the Load Balancer service routes more requests to Storage Nodes with higher CPU availability.
+*   As a general best practice, each site in your StorageGRID system should include two or more nodes with the Load Balancer service.
+
+Considering the available information, **Option 2 (Focus on High Availability and Distribution)** is the most suitable rephrasing. The document emphasizes distributing the workload across multiple Storage Nodes to maximize speed and connection capacity, which aligns with ensuring high availability, resilience, and optimal resource allocation."
+Replication capabilities between datacentres / data protection against data loss and corruption,"The content discusses several aspects of data resilience, cross-datacenter replication (geo-protection), and disaster recovery:
+
+*   **Geo-protection:** Implemented by the HCP Replication service, keeps tenants and namespaces on two or more HCP systems in sync, typically in separate geographic locations connected by a high-speed wide area network. This protects against unavailability or catastrophic failure of a system and can even protect against concurrent unavailability or loss of more than one system.
+*   **Replication Topology:** A configuration of HCP systems related through replication. If a system in a replication topology becomes unavailable, another system can provide continued data availability. If a system suffers irreparable damage, another can serve as a source for disaster recovery.
+*   **Disaster Recovery:** Entails reprotecting objects in replicated namespaces to their prefailure protection level by recovering them to a replacement system.
+*   **Combined Topologies:** Bidirectional and one-to-many replication topologies can be combined so that a third system provides continuous data availability and disaster recovery functionality.
+*   **Object access during replication:** You can read from namespaces on all systems where those namespaces are replicated. The replication topology determines the systems on which you can write to namespaces.
+
+The document does not specify the RTO (Recovery Time Objective) and RPO (Recovery Point Objective)."
+Compression and deduplication capabilities,"The Compression/Encryption service compresses object data to make more efficient use of HCP storage space, freeing space for storing more objects. The storage used can be less due to compression/encryption, duplicate elimination, and metadata-only storage tiers. The Compression/Encryption service runs only on primary storage by default, but can be configured to run on extended storage as well. If an object isn’t already compressed, the service compresses it, unless compressing the object doesn’t reduce its size. In that case, the service marks it as uncompressible and doesn’t try to compress it again in future runs. You control which objects are eligible for compression by setting criteria in the System Management Console."
+TCP / Application Protocol Support,"The provided context indicates that the port type is TCP. However, it does not specify which application protocols are supported over TCP.
+
+Not enough information is available in the retrieved content."
+RESTful API integration for product management,Not enough information is available in the retrieved content.
+"Can reports be produced via REST API or viewed on a GUI - based on node/site and global capacity (total, quota, used, free)? If so, please explain what is available to see and provide sample reports.",Not enough information is available in the retrieved content.
+Administration capabilities for a multi-tenant product / solution,Not enough information is available in the retrieved content.
+"Product monitoring capabilities - device performance, user experience and storage capacity; over which protocols and interfaces",Not enough information is available in the retrieved content.
+Ability to set and apply archive quotas per tenant,Not enough information is available in the retrieved content.
+"Data Tiering Capability, including cloud storage endpoints / Hybrid solution","Here's an outline of StorageGRID's data tiering capabilities, focusing on cloud storage and hybrid environments, based on the provided documents:
+
+*   **General Functionality:** StorageGRID offers a cloud storage pool feature to tier objects to lower-cost storage and free up space in StorageGRID.
+*   **ILM Rules:** Implementing a tiering solution involves creating a Cloud Storage Pool and configuring an ILM rule to move rarely used objects from Storage Nodes to the Cloud Storage Pool. The rule is then added to the ILM policy, which is simulated and activated.
+*   **Multiple Cloud Endpoints:** You can configure multiple Cloud Storage Pool endpoints to tier or back up object data to more than one cloud. ILM rules let you specify which objects are stored in each Cloud Storage Pool. For instance, storing objects from some tenants or buckets in Amazon S3 Glacier and others in Azure Blob storage.
+*   **Supported Cloud Platforms:** Compatible S3 infrastructure (including Amazon S3), Azure Blob Archive tier, and Google Cloud Platform (GCP).
+*   **Limitations:**
+    *   An object can be stored in only one Cloud Storage Pool at any given time.
+    *   Objects with S3 Object Lock enabled can’t be placed in Cloud Storage Pools.
+    *   FabricPool data can’t be tiered to Cloud Storage Pools.
+*   **Hybrid Cloud Enablement:** StorageGRID stores objects to public clouds, including Amazon Web Services (AWS) and Microsoft Azure, using policy-based information lifecycle management (ILM). StorageGRID platform services enable content replication, event notification, and metadata searching of objects stored to public clouds.
+*   **Connectivity:** Cloud Storage Pools use ports 80 (for http) and 443 (for https) by default, but you can specify a different port."
+Cloud Interoperability with main stream Cloud hyperscaler,"The document mentions that StorageGRID platform services can help implement a hybrid cloud strategy by allowing you to send event notifications and copies of S3 objects and object metadata to external destinations. It also supports replication endpoints that represent S3 buckets hosted on Amazon Web Services, the same or a remote StorageGRID deployment, or another service. The document also discusses configuring multiple Cloud Storage Pool endpoints to tier or back up object data to more than one cloud, such as Amazon S3 Glacier and Azure Blob storage."
+"While there is no requirement for the solution to fit with a private cloud infrastructure, this is a chance for the proponent to showcase its product’s features, it will be used to ensure that the products fit well into company's future direction.",Not enough information is available in the retrieved content.

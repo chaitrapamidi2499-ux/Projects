@@ -11,7 +11,7 @@ st.title("📜 AI-Powered RFP Chatbot")
 st.caption("Ask questions from your RFP PDFs (text, tables, screenshots). Answers are 100% grounded in documents.")
 
 # ✅ Show path being used
-VECTOR_DB_PATH = r"D:\Abishek\Capstone\Extracted\chromadb"
+VECTOR_DB_PATH = r"E:\Capstone\Extracted\chromadb"
 st.sidebar.markdown(f"📂 **Chroma Vector DB Path:**\n```\n{VECTOR_DB_PATH}\n```")
 
 # ✅ Initialize ChromaDB
@@ -26,7 +26,7 @@ except Exception as e:
 
 # ✅ Initialize Gemini
 try:
-    genai.configure(api_key=os.getenv("GEMINI_API_KEY"))  # Replace with your Gemini API key
+    genai.configure(api_key="YOUR_API_KEY")  # Replace with your Gemini API key
     gemini_model = genai.GenerativeModel("gemini-2.0-flash")
     st.sidebar.success("✅ Gemini API loaded")
 except Exception as e:

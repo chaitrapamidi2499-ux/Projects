@@ -8,11 +8,11 @@ from langchain.storage import InMemoryStore
 import google.generativeai as genai
 
 # ✅ Gemini API Key
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))  # Replace with your actual key
+genai.configure(api_key="YOUR_API_KEY")  # Replace with your actual key
 vision_model = genai.GenerativeModel("gemini-1.5-flash")
 
 # ✅ Paths
-BASE_DIR = r"E:\All My Projects\Capstone\Capstone\Extracted"
+BASE_DIR = r"E:\Capstone\Extracted"
 VECTOR_DB_PATH = os.path.join(BASE_DIR, "chromadb")
 
 # ✅ Initialize embedding + vector DB

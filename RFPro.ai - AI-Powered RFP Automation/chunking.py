@@ -2,7 +2,7 @@ import os
 import json
 
 # ✅ Base directory containing PDF folders
-BASE_DIR = r"E:\All My Projects\Capstone\Capstone\Extracted"
+BASE_DIR = r"E:\Capstone\Extracted"
 
 # ✅ Chunking utility
 def chunk_text(text, chunk_size=1000, overlap=100):

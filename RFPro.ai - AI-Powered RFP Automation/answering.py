@@ -4,11 +4,11 @@ from langchain_huggingface import HuggingFaceEmbeddings
 import google.generativeai as genai
 
 # ✅ Configure models and paths
-VECTOR_DB_PATH = r"E:\All My Projects\Capstone\Capstone\Extracted\chromadb"
+VECTOR_DB_PATH = r"E:\Capstone\Extracted\chromadb"
 embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 vector_store = Chroma(persist_directory=VECTOR_DB_PATH, embedding_function=embedding_model)
 genai.configure(api_key="YOUR_API_KEY")
-gemini_model = genai.GenerativeModel("gemini-3.5-flash")
+gemini_model = genai.GenerativeModel("gemini-2.0-flash")
 
 # ✅ Gemini Reranking (VARAG)
 def rerank_chunks_with_gemini(query, chunks, top_n=10):

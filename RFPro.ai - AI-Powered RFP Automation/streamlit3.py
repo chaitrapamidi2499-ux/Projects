@@ -16,7 +16,7 @@ show_rephrased = st.sidebar.checkbox("🔁 Show Rephrased Query")
 show_prompt = st.sidebar.checkbox("🧾 Show Final Gemini Prompt")
 
 # Path to questions
-CSV_PATH = r"E:\All My Projects\Capstone\Capstone\rag_answers_output2.csv"
+CSV_PATH = r"E:\Capstone\rag_answers_output2.csv"
 
 # Load evaluation questions
 if mode == "📁 Select from evaluation list":
