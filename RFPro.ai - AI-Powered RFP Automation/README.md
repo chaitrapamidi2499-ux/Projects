@@ -359,14 +359,12 @@ The goal is to make RFP answering **faster, more consistent, more explainable, a
 
 ---
 
+# 👩‍💻 Author
 
-# 👩‍💻 Authors
+**Chaitra Pamidi**
 
-
-
-*Artificial Intelligence • Generative AI • Data Science • Machine Learning • RAG*
+*Data Analytics • Data Science • Machine Learning • Artificial Intelligence*
 
 ---
 
-⭐ **If you found this project interesting, feel free to explore the repository and connect with us!**
-```
+⭐ **If you found this project interesting, feel free to explore the repository and connect with me!**
