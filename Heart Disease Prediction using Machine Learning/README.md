@@ -12,6 +12,17 @@ This project develops a machine learning-based prediction system that classifies
 
 ---
 
+# 📸 Project Preview
+
+<img width="1206" height="782" alt="dataset_overview" src="https://github.com/user-attachments/assets/1e8faffe-079c-45d3-952d-f5b5ce79469d" />
+<img width="1202" height="902" alt="model_comparison" src="https://github.com/user-attachments/assets/d5622f75-8841-440a-8745-06fd62207120" />
+<img width="1206" height="912" alt="correlation_heatmap" src="https://github.com/user-attachments/assets/6df32be0-a558-46ad-b85a-5006219c649b" />
+<img width="1182" height="885" alt="DT_ROC_curve" src="https://github.com/user-attachments/assets/eba7f044-e4bc-4168-90ec-10f3a960be7f" />
+<img width="1202" height="910" alt="KNN_ROC_curve" src="https://github.com/user-attachments/assets/0ce05bc0-09fa-4ba9-a1c6-c65337d31d9a" />
+<img width="1190" height="832" alt="LR_ROC_curve" src="https://github.com/user-attachments/assets/678319a7-3e49-4840-b3d0-81a88da068a7" />
+
+---
+
 # 🎯 Objectives
 
 - Analyze the heart disease dataset.
@@ -163,18 +174,6 @@ The project includes:
 - Performed threshold-based probability analysis.
 - Visualized prediction performance using a confusion matrix.
 - Identified the Decision Tree Classifier as the best-performing model on the dataset.
-
----
-
-# 📸 Outputs
-
-<img width="1206" height="782" alt="dataset_overview" src="https://github.com/user-attachments/assets/1e8faffe-079c-45d3-952d-f5b5ce79469d" />
-<img width="1202" height="902" alt="model_comparison" src="https://github.com/user-attachments/assets/d5622f75-8841-440a-8745-06fd62207120" />
-<img width="1206" height="912" alt="correlation_heatmap" src="https://github.com/user-attachments/assets/6df32be0-a558-46ad-b85a-5006219c649b" />
-<img width="1182" height="885" alt="DT_ROC_curve" src="https://github.com/user-attachments/assets/eba7f044-e4bc-4168-90ec-10f3a960be7f" />
-<img width="1202" height="910" alt="KNN_ROC_curve" src="https://github.com/user-attachments/assets/0ce05bc0-09fa-4ba9-a1c6-c65337d31d9a" />
-<img width="1190" height="832" alt="LR_ROC_curve" src="https://github.com/user-attachments/assets/678319a7-3e49-4840-b3d0-81a88da068a7" />
-
 
 ---
 
