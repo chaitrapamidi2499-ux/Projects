@@ -12,6 +12,24 @@ The projects leverage Pivot Tables, Pivot Charts, Slicers, Conditional Formattin
 
 ---
 
+# 📸 Project Preview
+
+## Financial Performance Dashboard
+
+<img width="1332" height="721" alt="report_1" src="https://github.com/user-attachments/assets/2abd3832-fdef-4ca2-864a-d8c85ecf0ed8" />
+<img width="1277" height="642" alt="report_2" src="https://github.com/user-attachments/assets/07ddf4bc-65d8-40e0-84bb-22b128c0d96d" />
+<img width="1177" height="720" alt="report_3" src="https://github.com/user-attachments/assets/0cd399a3-b626-482b-a9fb-e4a2e6b5213b" />
+
+
+## Recruitment Analysis Dashboard
+
+<img width="1551" height="732" alt="report_1" src="https://github.com/user-attachments/assets/6d892160-d55f-47c1-8153-295373cfcab9" />
+<img width="1550" height="702" alt="report_2" src="https://github.com/user-attachments/assets/72c603e2-f894-43db-9129-081205d9c7c1" />
+<img width="1827" height="727" alt="report_3" src="https://github.com/user-attachments/assets/c806979e-7c57-41bf-bc26-f865e47b4613" />
+
+---
+
+
 # 🎯 Objectives
 
 - Analyze real-world business datasets using Microsoft Excel.
@@ -174,23 +192,6 @@ Recruitment Insights
 - Analyzed applicant work experience.
 - Identified recruitment trends over time.
 - Supported HR decision-making through interactive reporting.
-
----
-
-# 📸 Dashboard Screenshots
-
-## Financial Performance Dashboard
-
-<img width="1332" height="721" alt="report_1" src="https://github.com/user-attachments/assets/2abd3832-fdef-4ca2-864a-d8c85ecf0ed8" />
-<img width="1277" height="642" alt="report_2" src="https://github.com/user-attachments/assets/07ddf4bc-65d8-40e0-84bb-22b128c0d96d" />
-<img width="1177" height="720" alt="report_3" src="https://github.com/user-attachments/assets/0cd399a3-b626-482b-a9fb-e4a2e6b5213b" />
-
-
-## Recruitment Analysis Dashboard
-
-<img width="1551" height="732" alt="report_1" src="https://github.com/user-attachments/assets/6d892160-d55f-47c1-8153-295373cfcab9" />
-<img width="1550" height="702" alt="report_2" src="https://github.com/user-attachments/assets/72c603e2-f894-43db-9129-081205d9c7c1" />
-<img width="1827" height="727" alt="report_3" src="https://github.com/user-attachments/assets/c806979e-7c57-41bf-bc26-f865e47b4613" />
 
 ---
 
