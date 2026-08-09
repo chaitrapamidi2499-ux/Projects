@@ -10,7 +10,7 @@ The **ConnectHub Customer Support Analytics Dashboard** is an interactive Power 
 
 Through interactive visualizations and dynamic filtering, users can explore customer interactions across different states, communication channels, sentiments, and support centers to identify trends and improve decision-making.
 
-# 📸 Dashboard Preview
+# 📸 Project Preview
 
 <img width="1232" height="821" alt="HOME" src="https://github.com/user-attachments/assets/5b76f277-faf0-4a68-82fa-a0df1b77942c" />
 <img width="1225" height="822" alt="GRID" src="https://github.com/user-attachments/assets/76d34dc6-ab4f-49a1-90c9-ce2489413dd1" />
