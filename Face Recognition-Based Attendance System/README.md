@@ -12,6 +12,12 @@ The project demonstrates the practical application of Computer Vision and Artifi
 
 ---
 
+# 📸 Project Preview
+
+<img width="1920" height="1080" alt="FR" src="https://github.com/user-attachments/assets/a98d46ae-1d63-4794-bbfc-3e628161fa62" />
+
+---
+
 # 🎯 Objectives
 
 - Automate attendance marking using facial recognition.
@@ -133,13 +139,6 @@ Each individual is recorded only once per day.
 - Unknown individuals are identified and not recorded.
 - Prevents duplicate attendance entries for the same date.
 - Lightweight implementation using Python and OpenCV.
-
----
-
-# 📸 Output
-
-<img width="1920" height="1080" alt="FR" src="https://github.com/user-attachments/assets/a98d46ae-1d63-4794-bbfc-3e628161fa62" />
-
 
 ---
 
