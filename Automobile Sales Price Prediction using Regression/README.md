@@ -12,7 +12,7 @@ The project includes data preprocessing, outlier treatment, feature engineering,
 
 ---
 
-# 📸 Outputs
+# 📸 Project Preview
 
 <img width="1075" height="887" alt="dataset_overview" src="https://github.com/user-attachments/assets/bb8c5ca5-8bcc-4caa-987b-8254b65fb28e" />
 <img width="1092" height="915" alt="outliers_detection" src="https://github.com/user-attachments/assets/610ad158-1a82-445f-ab07-010a6cfb8ff9" />
