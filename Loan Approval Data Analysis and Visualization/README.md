@@ -12,6 +12,16 @@ The project demonstrates a complete data preprocessing and exploratory data anal
 
 ---
 
+# 📸 Project Preview
+
+<img width="1250" height="846" alt="dataset_overview" src="https://github.com/user-attachments/assets/d160905d-565a-4ca0-a21d-4a30ee66f445" />
+<img width="1207" height="841" alt="loan_status" src="https://github.com/user-attachments/assets/8e9704aa-8497-457b-b66b-1e42580d40c7" />
+<img width="1247" height="907" alt="distribution_annual_income" src="https://github.com/user-attachments/assets/8ac5daae-6043-448a-9730-911d0c4b1be6" />
+<img width="1062" height="911" alt="covariance" src="https://github.com/user-attachments/assets/b39f742e-ec1f-4697-a01a-66e92879c260" />
+<img width="1030" height="907" alt="correlation_heatmap" src="https://github.com/user-attachments/assets/91326d87-dec6-49e6-853a-175c00270537" />
+
+---
+
 # 🎯 Objectives
 
 - Explore the loan dataset and understand its structure.
@@ -162,16 +172,6 @@ The analysis addresses several business questions, including:
 - Detected outliers using the Interquartile Range (IQR) method.
 - Applied outlier capping to numerical features.
 - Encoded the target variable for future machine learning applications.
-
----
-
-# 📸 Outputs
-
-<img width="1250" height="846" alt="dataset_overview" src="https://github.com/user-attachments/assets/d160905d-565a-4ca0-a21d-4a30ee66f445" />
-<img width="1207" height="841" alt="loan_status" src="https://github.com/user-attachments/assets/8e9704aa-8497-457b-b66b-1e42580d40c7" />
-<img width="1247" height="907" alt="distribution_annual_income" src="https://github.com/user-attachments/assets/8ac5daae-6043-448a-9730-911d0c4b1be6" />
-<img width="1062" height="911" alt="covariance" src="https://github.com/user-attachments/assets/b39f742e-ec1f-4697-a01a-66e92879c260" />
-<img width="1030" height="907" alt="correlation_heatmap" src="https://github.com/user-attachments/assets/91326d87-dec6-49e6-853a-175c00270537" />
 
 ---
 
