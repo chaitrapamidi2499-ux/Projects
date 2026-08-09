@@ -255,6 +255,7 @@ Through this project, I gained hands-on experience in:
 # 👩‍💻 Author
 
 **Chaitra Pamidi**
+
 *Data Analytics • Data Science • Machine Learning • Artificial Intelligence*
 
 ---
