@@ -252,13 +252,13 @@ Through this project, I gained hands-on experience in:
 
 ---
 
+---
+
 # 👩‍💻 Author
 
-**Chaitra Pamidi**
-
+**Chaitra Pamidi**  
 *Data Analytics • Data Science • Machine Learning • Artificial Intelligence*
 
 ---
 
 ⭐ **If you found this project interesting, feel free to explore the repository and connect with me!**
-```
