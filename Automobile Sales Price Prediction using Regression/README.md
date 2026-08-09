@@ -12,6 +12,17 @@ The project includes data preprocessing, outlier treatment, feature engineering,
 
 ---
 
+# 📸 Outputs
+
+<img width="1075" height="887" alt="dataset_overview" src="https://github.com/user-attachments/assets/bb8c5ca5-8bcc-4caa-987b-8254b65fb28e" />
+<img width="1092" height="915" alt="outliers_detection" src="https://github.com/user-attachments/assets/610ad158-1a82-445f-ab07-010a6cfb8ff9" />
+<img width="1012" height="810" alt="train_test_split" src="https://github.com/user-attachments/assets/8974c529-bcc9-4c13-a4f7-3123387bea3c" />
+<img width="1165" height="332" alt="decision_tree" src="https://github.com/user-attachments/assets/65cfe86c-e935-490f-88c3-8f4b6b66a16c" />
+<img width="1195" height="347" alt="linear_regression" src="https://github.com/user-attachments/assets/c3da7cc1-b079-4f70-af04-827ffeb02c20" />
+<img width="1107" height="747" alt="MAPE_Scores_KNN" src="https://github.com/user-attachments/assets/509d8391-77de-42d8-9d17-af2c207e4919" />
+
+---
+
 # 🎯 Objectives
 
 - Clean and preprocess automobile data.
@@ -158,17 +169,6 @@ Based on the evaluation results, **Linear Regression** achieved the lowest predi
 - Compared multiple regression algorithms.
 - Evaluated model performance using MAPE.
 - Built a reusable workflow for automobile price prediction.
-
----
-
-# 📸 Outputs
-
-<img width="1075" height="887" alt="dataset_overview" src="https://github.com/user-attachments/assets/bb8c5ca5-8bcc-4caa-987b-8254b65fb28e" />
-<img width="1092" height="915" alt="outliers_detection" src="https://github.com/user-attachments/assets/610ad158-1a82-445f-ab07-010a6cfb8ff9" />
-<img width="1012" height="810" alt="train_test_split" src="https://github.com/user-attachments/assets/8974c529-bcc9-4c13-a4f7-3123387bea3c" />
-<img width="1165" height="332" alt="decision_tree" src="https://github.com/user-attachments/assets/65cfe86c-e935-490f-88c3-8f4b6b66a16c" />
-<img width="1195" height="347" alt="linear_regression" src="https://github.com/user-attachments/assets/c3da7cc1-b079-4f70-af04-827ffeb02c20" />
-<img width="1107" height="747" alt="MAPE_Scores_KNN" src="https://github.com/user-attachments/assets/509d8391-77de-42d8-9d17-af2c207e4919" />
 
 ---
 
