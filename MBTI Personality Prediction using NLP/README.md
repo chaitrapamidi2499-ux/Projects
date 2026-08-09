@@ -12,6 +12,15 @@ The project involves extensive text preprocessing, feature extraction using vect
 
 ---
 
+
+# 📸 Project Preview
+
+<img width="1202" height="671" alt="data_overview" src="https://github.com/user-attachments/assets/fa4e2531-468b-43ff-b796-10b6b2997e68" />
+<img width="1172" height="632" alt="learning_curve_plot" src="https://github.com/user-attachments/assets/f6a89350-9fd9-4fdf-9428-c258b974ac37" />
+<img width="1156" height="580" alt="personality_distribution" src="https://github.com/user-attachments/assets/e2b71843-d6ff-4dd7-a45b-c0c15ae95aae" />
+
+---
+
 # 🎯 Objectives
 
 - Analyze MBTI personality text data.
@@ -182,14 +191,6 @@ The notebook includes:
 - Reduced text dimensionality using Truncated SVD.
 - Evaluated models using cross-validation.
 - Predicted MBTI personality types from user-generated text.
-
----
-
-# 📸 Outputs
-
-<img width="1202" height="671" alt="data_overview" src="https://github.com/user-attachments/assets/fa4e2531-468b-43ff-b796-10b6b2997e68" />
-<img width="1172" height="632" alt="learning_curve_plot" src="https://github.com/user-attachments/assets/f6a89350-9fd9-4fdf-9428-c258b974ac37" />
-<img width="1156" height="580" alt="personality_distribution" src="https://github.com/user-attachments/assets/e2b71843-d6ff-4dd7-a45b-c0c15ae95aae" />
 
 ---
 
