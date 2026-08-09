@@ -12,6 +12,16 @@ The analysis focuses on data quality assessment, preprocessing, visualization, a
 
 ---
 
+# 📸 Project Preview
+
+<img width="1237" height="881" alt="dataset_describe" src="https://github.com/user-attachments/assets/b7df77dc-bfe8-4d9d-8213-4c30524101d7" />
+<img width="1252" height="912" alt="dataset_overview" src="https://github.com/user-attachments/assets/d6dbe9b9-bb23-4195-9c31-80cc1125e9c6" />
+<img width="1090" height="916" alt="correlation_heatmap" src="https://github.com/user-attachments/assets/09935821-148c-432d-a598-c9b7106f4f73" />
+<img width="1047" height="827" alt="missing_value(before)" src="https://github.com/user-attachments/assets/9b698db0-0bed-448d-b6a2-33193d6da995" />
+<img width="1027" height="812" alt="missing_values(after)" src="https://github.com/user-attachments/assets/b2040352-3821-46e3-b1ed-08624ec6b856" />
+
+---
+
 # 🎯 Objectives
 
 - Explore the structure and quality of the automobile dataset.
@@ -129,17 +139,6 @@ The notebook includes:
 - Engine horsepower and engine cylinders exhibit strong correlation.
 - Fuel-efficient vehicles tend to have smaller engines and lower prices.
 - Data cleaning improved the dataset quality, making it suitable for further analysis and predictive modeling.
-
----
-
-# 📸 Project Preview
-
-<img width="1237" height="881" alt="dataset_describe" src="https://github.com/user-attachments/assets/b7df77dc-bfe8-4d9d-8213-4c30524101d7" />
-<img width="1252" height="912" alt="dataset_overview" src="https://github.com/user-attachments/assets/d6dbe9b9-bb23-4195-9c31-80cc1125e9c6" />
-<img width="1090" height="916" alt="correlation_heatmap" src="https://github.com/user-attachments/assets/09935821-148c-432d-a598-c9b7106f4f73" />
-<img width="1047" height="827" alt="missing_value(before)" src="https://github.com/user-attachments/assets/9b698db0-0bed-448d-b6a2-33193d6da995" />
-<img width="1027" height="812" alt="missing_values(after)" src="https://github.com/user-attachments/assets/b2040352-3821-46e3-b1ed-08624ec6b856" />
-
 
 ---
 
