@@ -12,7 +12,7 @@ The project includes image preprocessing, model training, performance evaluation
 
 ---
 
-# 📸 Outputs
+# 📸 Project Preview
 
 <img width="1917" height="1010" alt="Upload" src="https://github.com/user-attachments/assets/368776b0-556a-4c20-868e-843ab5a3c26c" />
 <img width="1917" height="1002" alt="Predict_1" src="https://github.com/user-attachments/assets/a45ce325-4c66-4002-ab4e-47d766f2335c" />
